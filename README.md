@@ -1,7 +1,9 @@
-# 一起上場 皮克球團隊日
+# 電通智能中心 dentsu Solution Center｜Team Building
 
-30 人皮克球 team building 活動企劃：學習練習、四項目團體賽（冠軍 5 分、亞軍 3 分）、歡樂趣味遊戲、躲避球加分賽與頒獎。
+**Stay grounded. Give good vibes.** 有底氣，也有好氣場
 
-頁面內含抽籤、現場計分板與分組器（平均／星座）。
+- 11/23（一）14:00–17:00｜南港運動中心（皮克球）
+- 17:30–20:00｜好好吃頓飯
+- 14:00 前完成報到；穿 DSC／DENTSU 黑 T＋好底氣襪子
 
 網址：https://vincenthsu1972.github.io/pickleball-team-day/

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>一起上場 皮克球團隊日</title>
+<title>DSC Team Building</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,6 +161,12 @@ textarea{width:100%;min-height:200px;background:var(--surface);border:1px solid 
 .checklist{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .checklist li{padding-left:26px;position:relative;font-size:14px}
 .checklist li:before{content:"";position:absolute;left:0;top:5px;width:15px;height:15px;border:2px solid var(--green);border-radius:4px}
+.tagline{margin-top:10px;font-size:clamp(20px,2.6vw,26px);font-weight:900;color:var(--court)}
+.notice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px}
+.notice>div{background:var(--warm-soft);border-radius:10px;padding:12px 16px;font-size:15px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.notice .nlabel{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--warm);flex:0 0 auto}
+.facts b{font-size:30px}
+@media (max-width:640px){.notice{grid-template-columns:1fr}}
 footer{padding-block:28px 40px;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
 footer a{color:var(--court)}
 
@@ -215,17 +221,22 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 
 <header class="hero">
   <div>
-    <div class="eyebrow">TEAM BUILDING · 活動企劃</div>
-    <h1>一起上場<br><mark>皮克球團隊日</mark></h1>
-    <p class="lead">四隊各派 7 位先發，四面球場同時開打混雙、女雙、男雙、單打。每個項目抽籤對戰，冠軍拿 5 分、亞軍拿 3 分，最後看哪一隊累積最多。</p>
+    <div class="eyebrow">電通智能中心 dentsu Solution Center｜TEAM BUILDING</div>
+    <h1>Stay grounded.<br><mark>Give good vibes.</mark></h1>
+    <p class="tagline">有底氣，也有好氣場</p>
+    <p class="lead">四隊各派 7 位先發，四面球場同時開打混雙、女雙、男雙、單打。冠軍拿 5 分、亞軍拿 3 分，最後再用躲避球加分賽決勝負。</p>
   </div>
   <div class="facts">
-    <div><b>30</b><span>人，分 4 隊</span></div>
-    <div><b>4</b><span>個項目，4 面球場同時打</span></div>
-    <div><b>3</b><span>場決出每個項目冠亞軍</span></div>
-    <div><b>5 / 3</b><span>冠軍積分／亞軍積分</span></div>
+    <div><b>11/23</b><span>星期一</span></div>
+    <div><b>14:00–17:00</b><span>南港運動中心｜皮克球</span></div>
+    <div><b>17:30–20:00</b><span>好好吃頓飯</span></div>
+    <div><b>4</b><span>隊，冠軍 5 分、亞軍 3 分</span></div>
   </div>
 </header>
+<div class="notice">
+  <div><span class="nlabel">報到</span><b>14:00 前</b>一定要在南港運動中心完成報到！</div>
+  <div><span class="nlabel">服裝</span>穿 <b>DSC／DENTSU 黑 T</b>＋<b>好底氣襪子</b></div>
+</div>
 
 <section id="rundown">
   <div class="head">
@@ -235,7 +246,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   </div>
   <div class="controls"><label for="start">開始時間</label><input id="start" type="time" value="14:00"><span id="range" class="num" style="font-size:17px">14:00–17:00</span></div>
   <div class="phase-list">
-    <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3>開場、分組、暖身</h3><p>公布分組、取隊名、喊隊呼，全體暖身與規則說明。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3>開場、分組、暖身</h3><p>14:00 前完成報到。公布分組、取隊名、喊隊呼，全體暖身與規則說明。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練帶練。最後 5 分鐘各隊排好 7 位先發與替補名單。</p></div></div>
     <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、抽籤</h3><p>四個項目各自抽出準決賽對戰組合。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙、球場 4 單打，同時進行。每個項目打 3 場：兩場準決賽＋一場決賽。</p></div></div>
@@ -243,6 +254,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="157,170"><small>13 分鐘</small></div><div><h3>最後加分賽｜躲避球</h3><p>依目前積分：第 1 名 vs 第 3 名、第 2 名 vs 第 4 名，兩場同時開打。內場存活幾人就加幾分。</p></div></div>
     <div class="phase-row"><div class="t" data-r="170,180"></div><div><h3>頒獎、合照</h3><p>公布總積分與排名，頒發獎勵。</p></div></div>
+    <div class="phase-row"><div class="t">17:30–20:00</div><div><h3>好好吃頓飯</h3><p>運動完一起吃晚餐。</p></div></div>
   </div>
 </section>
 
@@ -459,7 +471,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 </section>
 
 </div>
-<footer><div class="wrap">活動企劃 · 2026.10.15 · 限時賽與積分為本次活動自訂規則。</div></footer>
+<footer><div class="wrap">電通智能中心 dentsu Solution Center Team Building · 2026.11.23 南港運動中心 · 限時賽與積分為本次活動自訂規則。</div></footer>
 
 <script>
 (function(){
