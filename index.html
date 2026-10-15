@@ -136,7 +136,7 @@ td.rank{font-family:var(--f-num);font-size:22px;font-weight:700}
 .blank{display:inline-block;min-width:110px;border-bottom:2px dotted var(--muted);color:var(--muted);text-align:center}
 
 /* grouper */
-.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.modes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
 .mode{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left}
 .mode b{display:block;font-size:16px}
 .mode span{font-size:13px;color:var(--muted)}
@@ -417,11 +417,10 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="modes" role="group" aria-label="分組方式">
     <button class="mode" type="button" data-mode="balance" aria-pressed="true"><b>平均分組</b><span>男女、有沒有打過球都平均分。</span></button>
     <button class="mode" type="button" data-mode="star" aria-pressed="false"><b>星座分組</b><span>火象、土象、風象、水象各一隊。</span></button>
-    <button class="mode" type="button" data-mode="zodiac" aria-pressed="false"><b>生肖分組</b><span>依生肖三合分成四隊。</span></button>
   </div>
   <div id="modeMap" class="mapline"></div>
   <label for="roster" style="display:block;margin-top:16px;font-weight:700;font-size:14px">名單（每行一人）</label>
-  <p class="small">格式：姓名, 性別, 生日（月/日）, 生肖, 有沒有打過球（有/無）。用不到的欄位可留空。下方是範例名單。</p>
+  <p class="small">格式：姓名, 性別, 星座, 有沒有打過球（有/無）。用平均分組時星座可以留空。下方是範例名單。</p>
   <textarea id="roster" spellcheck="false"></textarea>
   <div class="g-actions">
     <button class="btn" id="run" type="button">分組</button>
@@ -526,24 +525,21 @@ document.getElementById('clearBoard').onclick=function(){document.getElementById
 document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks3',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
 
 /* 分組器 */
-var SAMPLE=['王小明, 男, 3/25, 馬, 有','陳怡君, 女, 7/14, 馬, 無','林志豪, 男, 11/2, 虎, 無','黃雅婷, 女, 1/8, 鼠, 有','張家豪, 男, 5/30, 龍, 無','李佩珊, 女, 9/9, 雞, 無','吳宗翰, 男, 12/18, 狗, 有','蔡依婷, 女, 2/27, 兔, 無','劉建宏, 男, 8/5, 牛, 無','楊淑芬, 女, 4/22, 羊, 有','許文傑, 男, 6/11, 猴, 無','鄭雅雯, 女, 10/30, 蛇, 無','謝承恩, 男, 1/28, 豬, 無','郭欣怡, 女, 6/3, 馬, 無','洪俊宇, 男, 9/27, 鼠, 有','邱美玲, 女, 12/5, 龍, 無','曾冠廷, 男, 3/3, 牛, 無','廖思穎, 女, 8/19, 虎, 有','賴柏翰, 男, 7/1, 兔, 無','周筱涵, 女, 11/21, 狗, 無','徐建志, 男, 2/9, 雞, 無','葉家瑜, 女, 5/12, 猴, 無','蘇彥廷, 男, 10/8, 羊, 有','莊雅筑, 女, 3/17, 豬, 無','呂明哲, 男, 12/29, 蛇, 無','江冠宇, 男, 4/4, 馬, 無','何承翰, 男, 8/30, 鼠, 無','羅國峰, 男, 6/25, 虎, 有','高宇翔, 男, 1/16, 龍, 無','潘俊廷, 男, 9/14, 狗, 無'].join('\n');
+var SAMPLE=['王小明, 男, 牡羊, 有','陳怡君, 女, 巨蟹, 無','林志豪, 男, 天蠍, 無','黃雅婷, 女, 摩羯, 有','張家豪, 男, 雙子, 無','李佩珊, 女, 處女, 無','吳宗翰, 男, 射手, 有','蔡依婷, 女, 雙魚, 無','劉建宏, 男, 獅子, 無','楊淑芬, 女, 金牛, 有','許文傑, 男, 雙子, 無','鄭雅雯, 女, 天蠍, 無','謝承恩, 男, 水瓶, 無','郭欣怡, 女, 雙子, 無','洪俊宇, 男, 天秤, 有','邱美玲, 女, 射手, 無','曾冠廷, 男, 雙魚, 無','廖思穎, 女, 獅子, 有','賴柏翰, 男, 巨蟹, 無','周筱涵, 女, 天蠍, 無','徐建志, 男, 水瓶, 無','葉家瑜, 女, 金牛, 無','蘇彥廷, 男, 天秤, 有','莊雅筑, 女, 雙魚, 無','呂明哲, 男, 摩羯, 無','江冠宇, 男, 牡羊, 無','何承翰, 男, 處女, 無','羅國峰, 男, 巨蟹, 有','高宇翔, 男, 摩羯, 無','潘俊廷, 男, 處女, 無'].join('\n');
 var CFG={
   balance:{names:['A 隊','B 隊','C 隊','D 隊'],subs:['','','',''],colors:['var(--court)','var(--green)','var(--warm)','#8a6bbf']},
-  star:{names:['火象隊','土象隊','風象隊','水象隊'],subs:['牡羊・獅子・射手','金牛・處女・摩羯','雙子・天秤・水瓶','巨蟹・天蠍・雙魚'],colors:['var(--warm)','#9a7b3c','var(--court)','var(--green)']},
-  zodiac:{names:['水局隊','火局隊','金局隊','木局隊'],subs:['猴・鼠・龍','虎・馬・狗','蛇・雞・牛','豬・兔・羊'],colors:['var(--court)','var(--warm)','#9a7b3c','var(--green)']}
+  star:{names:['火象隊','土象隊','風象隊','水象隊'],subs:['牡羊・獅子・射手','金牛・處女・摩羯','雙子・天秤・水瓶','巨蟹・天蠍・雙魚'],colors:['var(--warm)','#9a7b3c','var(--court)','var(--green)']}
 };
 var mode='balance',rosterEl=document.getElementById('roster');
-rosterEl.value=load('pb_roster2',SAMPLE);
-rosterEl.addEventListener('input',function(){save('pb_roster2',rosterEl.value)});
+rosterEl.value=load('pb_roster3',SAMPLE);
+rosterEl.addEventListener('input',function(){save('pb_roster3',rosterEl.value)});
 function renderMap(){var c=CFG[mode],el=document.getElementById('modeMap');el.innerHTML=mode==='balance'?'':c.names.map(function(n,i){return '<div><b>'+n+'</b>'+c.subs[i]+'</div>'}).join('')}
 document.querySelectorAll('.mode').forEach(function(b){b.addEventListener('click',function(){mode=b.dataset.mode;document.querySelectorAll('.mode').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});renderMap();run()})});
 
-var SIGNS=['摩羯','水瓶','雙魚','牡羊','金牛','雙子','巨蟹','獅子','處女','天秤','天蠍','射手','摩羯'],CUT=[20,19,21,20,21,22,23,23,23,24,23,22];
 var ELEM={'牡羊':0,'獅子':0,'射手':0,'金牛':1,'處女':1,'摩羯':1,'雙子':2,'天秤':2,'水瓶':2,'巨蟹':3,'天蠍':3,'雙魚':3};
-var ANIMALS='鼠牛虎兔龍蛇馬羊猴雞狗豬',TRINE={'猴':0,'鼠':0,'龍':0,'虎':1,'馬':1,'狗':1,'蛇':2,'雞':2,'牛':2,'豬':3,'兔':3,'羊':3};
-function signOf(b){var m=String(b||'').match(/(\d{1,2})\s*[\/\-.月]\s*(\d{1,2})/);if(!m)return null;var mo=+m[1],d=+m[2];if(mo<1||mo>12||d<1||d>31)return null;return d<CUT[mo-1]?SIGNS[mo-1]:SIGNS[mo]}
-function animalOf(z){z=String(z||'').trim();var ch=z.match(/[鼠牛虎兔龍蛇馬羊猴雞狗豬]/);if(ch)return ch[0];var y=z.match(/(19|20)\d{2}/);return y?ANIMALS[((+y[0]-4)%12+12)%12]:null}
-function parse(t){return t.split(/\n/).map(function(l){return l.trim()}).filter(Boolean).map(function(l){var p=l.split(/[,，、\t]/).map(function(x){return x.trim()});return{name:p[0],g:/女|f/i.test(p[1]||'')?'F':'M',sign:signOf(p[2]),animal:animalOf(p[3]),exp:/有|y|是/i.test(p[4]||''),moved:false}}).filter(function(p){return p.name})}
+var ALIAS={'白羊':'牡羊','人馬':'射手','山羊':'摩羯','寶瓶':'水瓶','天平':'天秤','室女':'處女'};
+function signOf(z){z=String(z||'');for(var k in ALIAS){if(z.indexOf(k)>-1)return ALIAS[k]}for(var e in ELEM){if(z.indexOf(e)>-1)return e}return null}
+function parse(t){return t.split(/\n/).map(function(l){return l.trim()}).filter(Boolean).map(function(l){var p=l.split(/[,，、\t]/).map(function(x){return x.trim()});return{name:p[0],g:/女|f/i.test(p[1]||'')?'F':'M',sign:signOf(p[2]),exp:/有|y|是/i.test(p[3]||''),moved:false}}).filter(function(p){return p.name})}
 function cntG(t,g){return t.filter(function(p){return p.g===g}).length}
 function balanced(people){
   var teams=[[],[],[],[]],ord=function(l){return shuffle(l.filter(function(p){return p.exp})).concat(shuffle(l.filter(function(p){return !p.exp})))};
@@ -574,9 +570,9 @@ function run(){
   if(mode==='balance')teams=balanced(people);
   else{
     teams=[[],[],[],[]];var unknown=[];
-    people.forEach(function(p){var k=mode==='star'?(p.sign?ELEM[p.sign]:null):(p.animal?TRINE[p.animal]:null);if(k==null)unknown.push(p);else teams[k].push(p)});
+    people.forEach(function(p){var k=p.sign?ELEM[p.sign]:null;if(k==null)unknown.push(p);else teams[k].push(p)});
     unknown.forEach(function(p){p.moved=true;teams[[0,1,2,3].sort(function(a,b){return teams[a].length-teams[b].length})[0]].push(p)});
-    if(unknown.length)warn.push(unknown.map(function(p){return p.name}).join('、')+' 沒有填'+(mode==='star'?'生日':'生肖')+'，先放進人數少的隊。');
+    if(unknown.length)warn.push(unknown.map(function(p){return p.name}).join('、')+' 沒有填星座，先放進人數少的隊。');
     teams=rebalance(teams,N,F);
   }
   if(F<8)warn.push('女生只有 '+F+' 人，有些隊伍的女雙要由男生代打。');
@@ -588,7 +584,7 @@ function renderTeams(teams){
   document.getElementById('teams').innerHTML=teams.map(function(t,i){
     var f=cntG(t,'F'),e=t.filter(function(p){return p.exp}).length;
     var items=t.slice().sort(function(a,b){return a.g>b.g?1:-1}).map(function(p){
-      var meta=mode==='star'?(p.sign||'—'):mode==='zodiac'?(p.animal||'—'):(p.exp?'打過球':'');
+      var meta=mode==='star'?(p.sign?p.sign+'座':'—'):(p.exp?'打過球':'');
       return '<li><span>'+esc(p.name)+' <small>'+(p.g==='F'?'女':'男')+'</small>'+(p.moved?'<span class="tag-x">交換生</span>':'')+'</span><small>'+meta+'</small></li>';
     }).join('');
     return '<div class="team" style="--tc:'+c.colors[i]+'"><h3>'+c.names[i]+'</h3><div class="sub">'+(c.subs[i]||'&nbsp;')+'</div><div class="stats"><span class="num">'+t.length+' 人</span><span>男 '+(t.length-f)+'・女 '+f+'</span><span>打過球 '+e+'</span></div><ul class="members">'+items+'</ul></div>';
