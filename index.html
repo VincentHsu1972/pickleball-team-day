@@ -236,12 +236,13 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="controls"><label for="start">開始時間</label><input id="start" type="time" value="14:00"><span id="range" class="num" style="font-size:17px">14:00–17:00</span></div>
   <div class="phase-list">
     <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3>開場、分組、暖身</h3><p>公布分組、取隊名、喊隊呼，全體暖身與規則說明。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="20,75"><small>55 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練帶練。最後 5 分鐘各隊排好 7 位先發與替補名單。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="75,80"></div><div><h3>補水、抽籤</h3><p>四個項目各自抽出準決賽對戰組合。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="80,122"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙、球場 4 單打，同時進行。每個項目打 3 場：兩場準決賽＋一場決賽。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="122,137"><small>15 分鐘</small></div><div><h3>中場休息＋歡樂躲避球</h3><p>補水、公布團體賽積分。想玩的人到球場 3、4 打躲避球，自由參加、不計分。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="137,167"><small>30 分鐘</small></div><div><h3>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="167,180"></div><div><h3>頒獎、合照</h3><p>公布總積分與排名，頒發獎勵。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練帶練。最後 5 分鐘各隊排好 7 位先發與替補名單。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、抽籤</h3><p>四個項目各自抽出準決賽對戰組合。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙、球場 4 單打，同時進行。每個項目打 3 場：兩場準決賽＋一場決賽。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="117,127"><small>10 分鐘</small></div><div><h3>中場休息</h3><p>補水、公布團體賽積分，布置歡樂遊戲。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="157,170"><small>13 分鐘</small></div><div><h3>最後加分賽｜躲避球</h3><p>依目前積分：第 1 名 vs 第 3 名、第 2 名 vs 第 4 名，兩場同時開打。內場存活幾人就加幾分。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="170,180"></div><div><h3>頒獎、合照</h3><p>公布總積分與排名，頒發獎勵。</p></div></div>
   </div>
 </section>
 
@@ -253,29 +254,29 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="cm-scroll"><div class="courtmap">
     <div></div><div class="cm-h">球場 1</div><div class="cm-h">球場 2</div><div class="cm-h">球場 3</div><div class="cm-h">球場 4</div>
 
-    <div class="cm-phase"><span class="num" data-r="20,75"></span>學習練習</div>
+    <div class="cm-phase"><span class="num" data-r="20,70"></span>學習練習</div>
     <div class="ct learn"><b>A 隊</b></div>
     <div class="ct learn"><b>B 隊</b></div>
     <div class="ct learn"><b>C 隊</b></div>
     <div class="ct learn"><b>D 隊</b></div>
 
-    <div class="cm-phase"><span class="num" data-r="80,122"></span>團體賽</div>
+    <div class="cm-phase"><span class="num" data-r="75,117"></span>團體賽</div>
     <div class="ct main"><b>混雙</b>各隊 1 男 1 女</div>
     <div class="ct main"><b>女雙</b>各隊 2 女</div>
     <div class="ct main"><b>男雙</b>各隊 2 男</div>
     <div class="ct main"><b>單打</b>不分男女</div>
 
-    <div class="cm-phase"><span class="num" data-r="122,137"></span>中場休息</div>
-    <div class="ct buffer"><b>休息區</b>補水</div>
-    <div class="ct buffer"><b>休息區</b>布置歡樂遊戲</div>
-    <div class="ct dodge"><b>躲避球</b>球場 3、4 拆網合併</div>
-    <div class="ct dodge"><b>躲避球</b>自由參加</div>
-
-    <div class="cm-phase"><span class="num" data-r="137,167"></span>歡樂趣味</div>
+    <div class="cm-phase"><span class="num" data-r="127,157"></span>歡樂趣味</div>
     <div class="ct fun"><b>遊戲一</b>發球打靶</div>
     <div class="ct fun"><b>遊戲二</b>接教練發球</div>
-    <div class="ct buffer"><b>休息區</b></div>
-    <div class="ct buffer"><b>休息區</b></div>
+    <div class="ct buffer"><b>休息區</b>拆網，準備躲避球</div>
+    <div class="ct buffer"><b>休息區</b>拆網，準備躲避球</div>
+
+    <div class="cm-phase"><span class="num" data-r="157,170"></span>躲避球加分賽</div>
+    <div class="ct buffer"><b>應援區</b></div>
+    <div class="ct buffer"><b>應援區</b></div>
+    <div class="ct dodge"><b>第 1 名 vs 第 3 名</b>球網拆除</div>
+    <div class="ct dodge"><b>第 2 名 vs 第 4 名</b>球網拆除</div>
   </div></div>
 </section>
 
@@ -299,12 +300,12 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="tablebox" style="margin-top:16px"><table>
     <thead><tr><th>場次</th><th>時間</th><th>內容</th></tr></thead>
     <tbody>
-      <tr><td>準決賽 1</td><td class="num" data-r="80,90" style="font-size:17px"></td><td>每場限時 10 分鐘</td></tr>
-      <tr><td class="muted">換場</td><td class="num muted" data-r="90,93" style="font-size:17px"></td><td class="muted">下一組上場、熱身、換人登記</td></tr>
-      <tr><td>準決賽 2</td><td class="num" data-r="93,103" style="font-size:17px"></td><td>另外兩隊上場</td></tr>
-      <tr><td class="muted">換場</td><td class="num muted" data-r="103,106" style="font-size:17px"></td><td class="muted">回報準決賽結果、決賽選手就位</td></tr>
-      <tr><td>決賽</td><td class="num" data-r="106,116" style="font-size:17px"></td><td>兩場勝隊爭冠</td></tr>
-      <tr><td class="muted">緩衝＋確認成績</td><td class="num muted" data-r="116,122" style="font-size:17px"></td><td class="muted">延長賽緩衝，各場回報冠亞軍</td></tr>
+      <tr><td>準決賽 1</td><td class="num" data-r="75,85" style="font-size:17px"></td><td>每場限時 10 分鐘</td></tr>
+      <tr><td class="muted">換場</td><td class="num muted" data-r="85,88" style="font-size:17px"></td><td class="muted">下一組上場、熱身、換人登記</td></tr>
+      <tr><td>準決賽 2</td><td class="num" data-r="88,98" style="font-size:17px"></td><td>另外兩隊上場</td></tr>
+      <tr><td class="muted">換場</td><td class="num muted" data-r="98,101" style="font-size:17px"></td><td class="muted">回報準決賽結果、決賽選手就位</td></tr>
+      <tr><td>決賽</td><td class="num" data-r="101,111" style="font-size:17px"></td><td>兩場勝隊爭冠</td></tr>
+      <tr><td class="muted">緩衝＋確認成績</td><td class="num muted" data-r="111,117" style="font-size:17px"></td><td class="muted">延長賽緩衝，各場回報冠亞軍</td></tr>
     </tbody>
   </table></div>
 
@@ -333,9 +334,9 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="tablebox"><table>
     <thead><tr><th>時段</th><th>時間</th><th>球場 1：發球打靶</th><th>球場 2：接教練發球</th></tr></thead>
     <tbody>
-      <tr><td>說明</td><td class="num" data-r="137,139" style="font-size:17px"></td><td colspan="2">主持人說明兩個遊戲</td></tr>
-      <tr><td>第 1 輪</td><td class="num" data-r="139,152" style="font-size:17px"></td><td>A 隊、B 隊</td><td>C 隊、D 隊</td></tr>
-      <tr><td>第 2 輪</td><td class="num" data-r="154,167" style="font-size:17px"></td><td>C 隊、D 隊</td><td>A 隊、B 隊</td></tr>
+      <tr><td>說明</td><td class="num" data-r="127,129" style="font-size:17px"></td><td colspan="2">主持人說明兩個遊戲</td></tr>
+      <tr><td>第 1 輪</td><td class="num" data-r="129,142" style="font-size:17px"></td><td>A 隊、B 隊</td><td>C 隊、D 隊</td></tr>
+      <tr><td>第 2 輪</td><td class="num" data-r="144,157" style="font-size:17px"></td><td>C 隊、D 隊</td><td>A 隊、B 隊</td></tr>
     </tbody>
   </table></div>
   <div class="grid2" style="margin-top:16px">
@@ -349,13 +350,24 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     </div>
   </div>
   <div class="card" style="margin-top:16px;border-color:var(--warm)">
-    <div class="eyebrow" style="color:var(--warm)">中場休息・自由參加</div>
-    <h3>歡樂躲避球</h3>
+    <div class="eyebrow" style="color:var(--warm)">最後加分賽</div>
+    <h3>躲避球：內場存活幾人，就加幾分</h3>
+    <p>歡樂趣味結束後，依當下總積分排名對戰，兩場在球場 3、4 同時開打。</p>
+    <div class="tablebox" style="margin-top:12px"><table>
+      <thead><tr><th>時段</th><th>時間</th><th>球場 3：第 1 名 vs 第 3 名</th><th>球場 4：第 2 名 vs 第 4 名</th></tr></thead>
+      <tbody>
+        <tr><td>說明就位</td><td class="num" data-r="157,158" style="font-size:17px"></td><td colspan="2">兩隊各派相同人數上場</td></tr>
+        <tr><td>上半場</td><td class="num" data-r="158,163" style="font-size:17px"></td><td>第 1 名在內場，第 3 名在外場丟</td><td>第 2 名在內場，第 4 名在外場丟</td></tr>
+        <tr><td>點人數、攻守交換</td><td class="num" data-r="163,164" style="font-size:17px"></td><td colspan="2">記下內場存活人數</td></tr>
+        <tr><td>下半場</td><td class="num" data-r="164,169" style="font-size:17px"></td><td>第 3 名在內場，第 1 名在外場丟</td><td>第 4 名在內場，第 2 名在外場丟</td></tr>
+        <tr><td>點人數、計分</td><td class="num" data-r="169,170" style="font-size:17px"></td><td colspan="2">記下內場存活人數</td></tr>
+      </tbody>
+    </table></div>
     <ul class="rules">
-      <li>團體賽結束後，球場 3、4 拆網合併成躲避球場，想玩的人自由參加，不計分。</li>
-      <li>到場的人隨機分成兩邊，被打中就到對方後場外，接住球的人可以救回一位隊友。</li>
-      <li>一局約 3 分鐘，打到中場休息結束前 2 分鐘，讓大家補水再進入歡樂趣味。</li>
-      <li>用軟式泡棉球，只打肩膀以下。</li>
+      <li>每半場 5 分鐘，時間到時內場還剩幾個人，那一隊就加幾分。</li>
+      <li>被打中就出場，在場邊等下半場。球先落地或打到頭部不算。</li>
+      <li>兩隊上場人數要一樣：7 人隊對 8 人隊時，8 人隊派 7 人上場，才公平。</li>
+      <li>用軟式泡棉球，每場 2 顆，只打肩膀以下。</li>
     </ul>
   </div>
 </section>
@@ -364,7 +376,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="head">
     <div class="eyebrow">POINTS & REWARDS</div>
     <h2>積分與獎勵</h2>
-    <p class="muted">四個比賽項目加兩個遊戲，共六個項目。每項冠軍 5 分、亞軍 3 分，加總最高的就是團隊總冠軍。</p>
+    <p class="muted">四個比賽項目加兩個遊戲，每項冠軍 5 分、亞軍 3 分。最後再加上躲避球加分賽的內場存活人數，總分最高的就是團隊總冠軍。</p>
   </div>
   <div class="simple-score">
     <div><b>5</b><span>冠軍</span></div>
@@ -378,7 +390,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <tbody id="picks"></tbody>
   </table></div>
   <div class="tablebox" style="margin-top:12px"><table>
-    <thead><tr><th>隊伍</th><th>總分</th><th>排名</th></tr></thead>
+    <thead><tr><th>隊伍</th><th>六項積分</th><th>躲避球加分</th><th>總分</th><th>排名</th></tr></thead>
     <tbody id="totals"></tbody>
   </table></div>
   <div class="g-actions"><button class="btn ghost" id="clearBoard" type="button">清空計分板</button><span id="clearConfirm" class="small" hidden>確定清空？<button class="btn" id="clearYes" type="button" style="margin-left:6px;padding:4px 12px">清空</button></span></div>
@@ -433,14 +445,14 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
         <li>主持 1 位；裁判 4 位（每面球場一位，可由教練擔任）；計分 1 位。</li>
         <li>球拍每人一支、皮克球 40 顆、四色背心。</li>
         <li>打靶地貼、計時器 4 個、哨子。遊戲二需要 1 位教練發球。</li>
-        <li>泡棉躲避球 4 顆、飲水、急救包。</li>
+        <li>泡棉躲避球 4 顆（兩場各 2 顆）、飲水、急救包。</li>
       </ul>
     </div>
     <div class="card">
       <h3>活動前確認</h3>
       <ul class="checklist">
         <li>男女人數：每隊至少 1 男 1 女可打混雙，2 女可打女雙。</li>
-        <li>球場 3、4 的球網能不能在團體賽後幾分鐘內拆下，合併後的場地夠不夠打躲避球。</li>
+        <li>球場 3、4 的球網能不能在歡樂趣味時段拆下，給最後的躲避球用。</li>
         <li>獎勵預算。</li>
       </ul>
     </div>
@@ -489,22 +501,29 @@ function renderPicks(){
   }).join('');
   calc();
 }
+var dodge=load('pb_dodge3',{});
 function calc(){
-  var tot=[0,0,0,0],wins=[0,0,0,0];
-  ITEMS.forEach(function(_,k){var p=picks[k]||{};if(p.w!==''&&p.w!=null){tot[+p.w]+=5;wins[+p.w]++}if(p.r!==''&&p.r!=null)tot[+p.r]+=3});
+  var base=[0,0,0,0],wins=[0,0,0,0];
+  ITEMS.forEach(function(_,k){var p=picks[k]||{};if(p.w!==''&&p.w!=null){base[+p.w]+=5;wins[+p.w]++}if(p.r!==''&&p.r!=null)base[+p.r]+=3});
+  var tot=base.map(function(b,i){var d=Number(dodge[i]);return b+(isFinite(d)?d:0)});
   var any=tot.some(function(x){return x>0});
   var order=[0,1,2,3].sort(function(a,b){return tot[b]-tot[a]||wins[b]-wins[a]});
+  var keep=document.activeElement&&document.activeElement.id;
   document.getElementById('totals').innerHTML=order.map(function(i){
     var rank=1+[0,1,2,3].filter(function(j){return tot[j]>tot[i]||(tot[j]===tot[i]&&wins[j]>wins[i])}).length;
-    return '<tr><td>'+esc(teamNames[i])+'</td><td class="total">'+tot[i]+'</td><td class="rank">'+(any?rank:'–')+'</td></tr>';
+    return '<tr><td>'+esc(teamNames[i])+'</td><td class="num" style="font-size:18px">'+base[i]+'</td><td><input class="score-in" type="number" min="0" max="16" id="dg'+i+'" value="'+(dodge[i]!=null?esc(dodge[i]):'')+'" aria-label="'+esc(teamNames[i])+' 躲避球加分"></td><td class="total">'+tot[i]+'</td><td class="rank">'+(any?rank:'–')+'</td></tr>';
   }).join('');
+  if(keep&&/^dg\d$/.test(keep)){var el=document.getElementById(keep);if(el){el.focus();var v=el.value;el.value='';el.value=v}}
 }
+document.getElementById('totals').addEventListener('change',function(e){
+  var m=e.target.id.match(/^dg(\d)$/);if(!m)return;dodge[+m[1]]=e.target.value;save('pb_dodge3',dodge);calc();
+});
 document.getElementById('picks').addEventListener('change',function(e){
   var m=e.target.id.match(/^([wr])(\d)$/);if(!m)return;
   var k=+m[2];picks[k]=picks[k]||{};picks[k][m[1]]=e.target.value;save('pb_picks3',picks);calc();
 });
 document.getElementById('clearBoard').onclick=function(){document.getElementById('clearConfirm').hidden=false};
-document.getElementById('clearYes').onclick=function(){picks={};save('pb_picks3',picks);renderPicks();document.getElementById('clearConfirm').hidden=true};
+document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks3',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
 
 /* 分組器 */
 var SAMPLE=['王小明, 男, 3/25, 馬, 有','陳怡君, 女, 7/14, 馬, 無','林志豪, 男, 11/2, 虎, 無','黃雅婷, 女, 1/8, 鼠, 有','張家豪, 男, 5/30, 龍, 無','李佩珊, 女, 9/9, 雞, 無','吳宗翰, 男, 12/18, 狗, 有','蔡依婷, 女, 2/27, 兔, 無','劉建宏, 男, 8/5, 牛, 無','楊淑芬, 女, 4/22, 羊, 有','許文傑, 男, 6/11, 猴, 無','鄭雅雯, 女, 10/30, 蛇, 無','謝承恩, 男, 1/28, 豬, 無','郭欣怡, 女, 6/3, 馬, 無','洪俊宇, 男, 9/27, 鼠, 有','邱美玲, 女, 12/5, 龍, 無','曾冠廷, 男, 3/3, 牛, 無','廖思穎, 女, 8/19, 虎, 有','賴柏翰, 男, 7/1, 兔, 無','周筱涵, 女, 11/21, 狗, 無','徐建志, 男, 2/9, 雞, 無','葉家瑜, 女, 5/12, 猴, 無','蘇彥廷, 男, 10/8, 羊, 有','莊雅筑, 女, 3/17, 豬, 無','呂明哲, 男, 12/29, 蛇, 無','江冠宇, 男, 4/4, 馬, 無','何承翰, 男, 8/30, 鼠, 無','羅國峰, 男, 6/25, 虎, 有','高宇翔, 男, 1/16, 龍, 無','潘俊廷, 男, 9/14, 狗, 無'].join('\n');
