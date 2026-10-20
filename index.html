@@ -492,7 +492,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   </div>
   <div id="modeMap" class="mapline"></div>
   <label for="roster" style="display:block;margin-top:16px;font-weight:700;font-size:14px">名單（每行一人）</label>
-  <p class="small">欄位順序：<b>中文名字, 英文名字, 星座, 血型, 有沒有打過皮克球（有/無）, 性別（選填）</b>。可以直接從 Excel 複製整欄貼上，第一行如果是標題會自動略過。性別用來平均分配女雙、混雙的人選，沒填也能分組。下方是範例名單。</p>
+  <p class="small">欄位順序：<b>中文名字, 英文名字, 星座, 血型, 有沒有打過皮克球（有/無）, 性別（選填）</b>。可以直接從 Excel 複製整欄貼上，第一行如果是標題會自動略過。性別用來平均分配女雙、混雙的人選；沒填的話會依中英文名字推測，猜錯或看不出來的再補填即可。下方是範例名單。</p>
   <textarea id="roster" spellcheck="false"></textarea>
   <div class="g-actions">
     <button class="btn" id="run" type="button">分組</button>
@@ -597,15 +597,15 @@ document.getElementById('clearBoard').onclick=function(){document.getElementById
 document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks3',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
 
 /* 分組器 */
-var SAMPLE=['中文名字, 英文名字, 星座, 血型, 打過皮克球, 性別','王小明, Ming, 牡羊, A, 有, 男','陳怡君, Iris, 巨蟹, O, 無, 女','林志豪, Howard, 天蠍, B, 無, 男','黃雅婷, Tina, 摩羯, A, 有, 女','張家豪, Kevin, 雙子, O, 無, 男','李佩珊, Sandy, 處女, AB, 無, 女','吳宗翰, Hank, 射手, O, 有, 男','蔡依婷, Elaine, 雙魚, A, 無, 女','劉建宏, Jimmy, 獅子, B, 無, 男','楊淑芬, Fen, 金牛, O, 有, 女','許文傑, Jay, 雙子, A, 無, 男','鄭雅雯, Wendy, 天蠍, B, 無, 女','謝承恩, Ethan, 水瓶, O, 無, 男','郭欣怡, Cindy, 雙子, A, 無, 女','洪俊宇, Jerry, 天秤, AB, 有, 男','邱美玲, Melody, 射手, O, 無, 女','曾冠廷, Kenny, 雙魚, A, 無, 男','廖思穎, Sylvia, 獅子, B, 有, 女','賴柏翰, Bob, 巨蟹, O, 無, 男','周筱涵, Hannah, 天蠍, A, 無, 女','徐建志, Jason, 水瓶, B, 無, 男','葉家瑜, Joyce, 金牛, O, 無, 女','蘇彥廷, Ian, 天秤, A, 有, 男','莊雅筑, Ruby, 雙魚, AB, 無, 女','呂明哲, Jeff, 摩羯, O, 無, 男','江冠宇, Leo, 牡羊, B, 無, 男','何承翰, Henry, 處女, A, 無, 男','羅國峰, Frank, 巨蟹, O, 有, 男','高宇翔, Sean, 摩羯, A, 無, 男','潘俊廷, Patrick, 處女, B, 無, 男'].join('\n');
+var SAMPLE=['中文名字, 英文名字, 星座, 血型, 打過皮克球','王小明, Ming, 牡羊, A, 有','陳怡君, Iris, 巨蟹, O, 無','林志豪, Howard, 天蠍, B, 無','黃雅婷, Tina, 摩羯, A, 有','張家豪, Kevin, 雙子, O, 無','李佩珊, Sandy, 處女, AB, 無','吳宗翰, Hank, 射手, O, 有','蔡依婷, Elaine, 雙魚, A, 無','劉建宏, Jimmy, 獅子, B, 無','楊淑芬, Fen, 金牛, O, 有','許文傑, Jay, 雙子, A, 無','鄭雅雯, Wendy, 天蠍, B, 無','謝承恩, Ethan, 水瓶, O, 無','郭欣怡, Cindy, 雙子, A, 無','洪俊宇, Jerry, 天秤, AB, 有','邱美玲, Melody, 射手, O, 無','曾冠廷, Kenny, 雙魚, A, 無','廖思穎, Sylvia, 獅子, B, 有','賴柏翰, Bob, 巨蟹, O, 無','周筱涵, Hannah, 天蠍, A, 無','徐建志, Jason, 水瓶, B, 無','葉家瑜, Joyce, 金牛, O, 無','蘇彥廷, Ian, 天秤, A, 有','莊雅筑, Ruby, 雙魚, AB, 無','呂明哲, Jeff, 摩羯, O, 無','江冠宇, Leo, 牡羊, B, 無','何承翰, Henry, 處女, A, 無','羅國峰, Frank, 巨蟹, O, 有','高宇翔, Sean, 摩羯, A, 無','潘俊廷, Patrick, 處女, B, 無'].join('\n');
 var CFG={
   balance:{names:['A 隊','B 隊','C 隊','D 隊'],subs:['','','',''],colors:['var(--court)','var(--green)','var(--warm)','#8a6bbf']},
   star:{names:['火象隊','土象隊','風象隊','水象隊'],subs:['牡羊・獅子・射手','金牛・處女・摩羯','雙子・天秤・水瓶','巨蟹・天蠍・雙魚'],colors:['var(--warm)','#9a7b3c','var(--court)','var(--green)']},
   blood:{names:['A 型隊','B 型隊','O 型隊','AB 型隊'],subs:['','','',''],colors:['var(--warm)','var(--court)','var(--green)','#8a6bbf']}
 };
 var mode='balance',rosterEl=document.getElementById('roster');
-rosterEl.value=load('pb_roster4',SAMPLE);
-rosterEl.addEventListener('input',function(){save('pb_roster4',rosterEl.value)});
+rosterEl.value=load('pb_roster5',SAMPLE);
+rosterEl.addEventListener('input',function(){save('pb_roster5',rosterEl.value)});
 function renderMap(){var c=CFG[mode],el=document.getElementById('modeMap');el.innerHTML=mode!=='star'?'':c.names.map(function(n,i){return '<div><b>'+n+'</b>'+c.subs[i]+'</div>'}).join('')}
 document.querySelectorAll('.mode').forEach(function(b){b.addEventListener('click',function(){mode=b.dataset.mode;document.querySelectorAll('.mode').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});renderMap();run()})});
 
@@ -614,8 +614,18 @@ var ALIAS={'白羊':'牡羊','人馬':'射手','山羊':'摩羯','寶瓶':'水�
 function signOf(z){z=String(z||'');for(var k in ALIAS){if(z.indexOf(k)>-1)return ALIAS[k]}for(var e in ELEM){if(z.indexOf(e)>-1)return e}return null}
 function bloodOf(z){z=String(z||'').toUpperCase().replace(/\s|型/g,'');if(/^AB/.test(z))return 3;if(/^A/.test(z))return 0;if(/^B/.test(z))return 1;if(/^O/.test(z))return 2;return null}
 var BLOOD=['A','B','O','AB'];
+var F_EN=' Abby Alice Alison Allison Amanda Amy Angela Angel Anita Anna Annabel Annie Apple Ariel Ashley Audrey Becky Bella Betty Bonnie Candy Carol Carrie Catherine Cathy Celia Celine Cherry Chloe Christina Christine Cindy Claire Coco Crystal Cynthia Daisy Debbie Diana Doris Eileen Elaine Elena Elizabeth Ella Elle Elsa Emily Emma Erica Esther Eunice Eva Evelyn Fanny Fay Fiona Flora Gigi Gina Gloria Grace Hannah Hazel Heidi Helen Ingrid Irene Iris Isabel Isabella Ivy Jacqueline Jane Janet Janice Jasmine Jennifer Jenny Jessica Joan Joanna Josephine Joy Joyce Judy Julia Karen Kate Katherine Kathy Kay Kelly Kiki Kimberly Kitty Kristy Laura Lauren Leah Lena Lillian Lily Linda Lisa Lucy Lydia Mabel Maggie Mandy Maria May Megan Melody Mia Michelle Molly Monica Nancy Natalie Nicole Nina Olivia Pauline Peggy Penny Phoebe Queenie Rachel Rainie Rebecca Regina Renee Rita Rosa Rose Ruby Ruth Sabrina Sally Sandy Sara Sarah Selina Serena Sharon Sherry Shirley Sophia Sophie Stella Stephanie Susan Sylvia Tammy Teresa Tiffany Tina Tracy Valerie Vanessa Veronica Vicky Vivian Wendy Winnie Yoyo Yvonne Zoe Zoey '.toLowerCase(),M_EN=' Aaron Adam Adrian Alan Albert Allan Allen Alvin Andrew Andy Anthony Arthur Ben Benjamin Benson Bill Bob Brian Bruce Bryan Calvin Carl Charles Chester Colin Daniel Danny David Dean Dennis Derek Dylan Eddie Edward Elvis Eric Ethan Evan Felix Frank Frankie Gary George Gordon Hank Hans Harry Harvey Henry Howard Hugo Ian Isaac Ivan Jack Jacky Jacob James Jason Jay Jeff Jeffrey Jerome Jerry Jesse Jim Jimmy Joe Joel John Johnny Jonathan Joseph Joshua Justin Keith Ken Kenneth Kenny Kent Kevin Kyle Larry Lawrence Leo Leon Leonard Louis Lucas Marco Marcus Mark Martin Matthew Max Michael Mike Morris Neil Nelson Nick Norman Oscar Owen Patrick Paul Peter Philip Ray Raymond Rex Richard Rick Ricky Robert Rocky Roger Ronald Roy Russell Ryan Scott Sean Sebastian Shawn Simon Spencer Stanley Stephen Steve Steven Terence Thomas Tim Timothy Toby Tom Tommy Tony Travis Tyler Victor Vincent Wade Walter Wayne William Willy Wilson Zack '.toLowerCase(),F_ZH='婷娟芬芳玲琳雯婉娜妮姿媛嫻淑瑩怡欣筑筱萍蓉菁蕙薇佩珊琪綺秀麗美惠慧靜涵穎馨雅倩儀蓮娥嬌姍姝婕燕鳳霞梅蘭菊彤晴璇琦瑄萱宜貞茹蘋翠卉葳蓁伶俐璐曦妤婧姵絜綾如瑜',M_ZH='豪宏傑偉翔廷宇志強剛峰軍勇龍虎彬斌凱俊浩翰哲國誠建德雄輝威鴻鵬銘鈞耀祥勳賢義仁政鑫澤昇彥冠柏承民泰忠信良武富榮源桓楷權霆毅聖崇皓晟宸煒弘明';
+function guessG(zh,en){
+  var e=String(en||'').trim().split(/\s+/)[0].toLowerCase(),ge=null;
+  if(e){if(F_EN.indexOf(' '+e+' ')>-1)ge='F';else if(M_EN.indexOf(' '+e+' ')>-1)ge='M'}
+  var given=String(zh||'').trim();given=given.length>=3?given.slice(given.length-2):given.slice(1);
+  var f=0,m=0;for(var i=0;i<given.length;i++){if(F_ZH.indexOf(given[i])>-1)f++;if(M_ZH.indexOf(given[i])>-1)m++}
+  var gz=f>m?'F':(m>f?'M':null);
+  if(ge&&gz&&ge!==gz)return null;return ge||gz;
+}
+
 function parse(t){return t.split(/\n/).map(function(l){return l.trim()}).filter(Boolean).map(function(l){var p=l.split(/[,，\t]/).map(function(x){return x.trim()});
-  var gs=p[5]||'';return{name:p[0],en:p[1]||'',sign:signOf(p[2]),blood:bloodOf(p[3]),exp:/^(有|y|yes|是|v|會)/i.test(p[4]||''),g:/女|^f/i.test(gs)?'F':(/男|^m/i.test(gs)?'M':'U'),moved:false}})
+  var gs=p[5]||'',g=/女|^f/i.test(gs)?'F':(/男|^m/i.test(gs)?'M':null),guess=false;if(!g&&p[0]){g=guessG(p[0],p[1]);guess=!!g}return{name:p[0],en:p[1]||'',sign:signOf(p[2]),blood:bloodOf(p[3]),exp:/^(有|y|yes|是|v|會)/i.test(p[4]||''),g:g||'U',guess:guess,moved:false}})
   .filter(function(p){return p.name&&!/中文|姓名|名字/.test(p.name)})}
 function cntG(t,g){return t.filter(function(p){return p.g===g}).length}
 function balanced(people){
@@ -657,7 +667,7 @@ function run(){
     if(unknown.length)warn.push(unknown.map(function(p){return p.name}).join('、')+' 沒有填'+(mode==='star'?'星座':'血型')+'，先放進人數少的隊。');
     teams=rebalance(teams,N,F);
   }
-  var U=cntG(people,'U');if(U===N)warn.push('名單沒有填性別，分組時無法平均分配女生，排女雙、混雙前請各隊確認。');else if(F<8)warn.push('女生只有 '+F+' 人，有些隊伍的女雙要由男生代打。');
+  var unk=people.filter(function(p){return p.g==='U'});if(unk.length)warn.push('看不出性別，請在名單補填：'+unk.map(function(p){return p.name+(p.en?' '+p.en:'')}).join('、'));else if(F<8)warn.push('女生只有 '+F+' 人，有些隊伍的女雙要由男生代打。');
   document.getElementById('warn').innerHTML=warn.map(esc).join('<br>');
   lastTeams=teams;renderTeams(teams);
 }
@@ -667,12 +677,12 @@ function renderTeams(teams){
     var f=cntG(t,'F'),m=cntG(t,'M'),e=t.filter(function(p){return p.exp}).length;
     var items=t.slice().sort(function(a,b){return a.g>b.g?1:-1}).map(function(p){
       var meta=mode==='star'?(p.sign?p.sign+'座':'—'):mode==='blood'?(p.blood!=null?BLOOD[p.blood]+' 型':'—'):(p.exp?'打過皮克球':'');
-      return '<li><span>'+esc(p.name)+(p.en?' <small>'+esc(p.en)+'</small>':'')+(p.g!=='U'?' <small>'+(p.g==='F'?'女':'男')+'</small>':'')+(p.moved?'<span class="tag-x">交換生</span>':'')+'</span><small>'+meta+'</small></li>';
+      return '<li><span>'+esc(p.name)+(p.en?' <small>'+esc(p.en)+'</small>':'')+(p.g!=='U'?' <small'+(p.guess?' title="依名字推測"':'')+'>'+(p.g==='F'?'女':'男')+(p.guess?'*':'')+'</small>':' <small>?</small>')+(p.moved?'<span class="tag-x">交換生</span>':'')+'</span><small>'+meta+'</small></li>';
     }).join('');
     return '<div class="team" style="--tc:'+c.colors[i]+'"><h3>'+c.names[i]+'</h3><div class="sub">'+(c.subs[i]||'&nbsp;')+'</div><div class="stats"><span class="num">'+t.length+' 人</span>'+(f+m?'<span>男 '+m+'・女 '+f+'</span>':'')+'<span>打過皮克球 '+e+'</span></div><ul class="members">'+items+'</ul></div>';
   }).join('');
   var any=teams.some(function(t){return t.some(function(p){return p.moved})});
-  document.getElementById('xNote').textContent=mode==='balance'?'每按一次「分組」都會重新抽。':(any?'「交換生」是為了讓人數和男女平均，被調到別隊的人。':'');
+  var guessed=teams.some(function(t){return t.some(function(p){return p.guess})});document.getElementById('xNote').textContent=(mode==='balance'?'每按一次「分組」都會重新抽。':(any?'「交換生」是為了讓人數和男女平均，被調到別隊的人。':''))+(guessed?' 標「*」的性別是依中英文名字推測，不一定正確，看到猜錯的請在名單第 6 欄補上性別。':'');
   teamNames=c.names.slice();renderPicks();drawAll();
 }
 document.getElementById('run').onclick=run;
