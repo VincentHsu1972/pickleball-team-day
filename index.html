@@ -136,7 +136,7 @@ td.rank{font-family:var(--f-num);font-size:22px;font-weight:700}
 .blank{display:inline-block;min-width:110px;border-bottom:2px dotted var(--muted);color:var(--muted);text-align:center}
 
 /* grouper */
-.modes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
 .mode{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left}
 .mode b{display:block;font-size:16px}
 .mode span{font-size:13px;color:var(--muted)}
@@ -486,12 +486,13 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <p class="muted">選一種方式，貼上名單，按「分組」。每隊會自動調成 7–8 人，男女盡量平均。</p>
   </div>
   <div class="modes" role="group" aria-label="分組方式">
-    <button class="mode" type="button" data-mode="balance" aria-pressed="true"><b>平均分組</b><span>男女、有沒有打過球都平均分。</span></button>
+    <button class="mode" type="button" data-mode="balance" aria-pressed="true"><b>平均分組</b><span>有沒有打過皮克球、男女都平均分。</span></button>
     <button class="mode" type="button" data-mode="star" aria-pressed="false"><b>星座分組</b><span>火象、土象、風象、水象各一隊。</span></button>
+    <button class="mode" type="button" data-mode="blood" aria-pressed="false"><b>血型分組</b><span>A、B、O、AB 型各一隊。</span></button>
   </div>
   <div id="modeMap" class="mapline"></div>
   <label for="roster" style="display:block;margin-top:16px;font-weight:700;font-size:14px">名單（每行一人）</label>
-  <p class="small">格式：姓名, 性別, 星座, 有沒有打過球（有/無）。用平均分組時星座可以留空。下方是範例名單。</p>
+  <p class="small">欄位順序：<b>中文名字, 英文名字, 星座, 血型, 有沒有打過皮克球（有/無）, 性別（選填）</b>。可以直接從 Excel 複製整欄貼上，第一行如果是標題會自動略過。性別用來平均分配女雙、混雙的人選，沒填也能分組。下方是範例名單。</p>
   <textarea id="roster" spellcheck="false"></textarea>
   <div class="g-actions">
     <button class="btn" id="run" type="button">分組</button>
@@ -596,41 +597,51 @@ document.getElementById('clearBoard').onclick=function(){document.getElementById
 document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks3',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
 
 /* 分組器 */
-var SAMPLE=['王小明, 男, 牡羊, 有','陳怡君, 女, 巨蟹, 無','林志豪, 男, 天蠍, 無','黃雅婷, 女, 摩羯, 有','張家豪, 男, 雙子, 無','李佩珊, 女, 處女, 無','吳宗翰, 男, 射手, 有','蔡依婷, 女, 雙魚, 無','劉建宏, 男, 獅子, 無','楊淑芬, 女, 金牛, 有','許文傑, 男, 雙子, 無','鄭雅雯, 女, 天蠍, 無','謝承恩, 男, 水瓶, 無','郭欣怡, 女, 雙子, 無','洪俊宇, 男, 天秤, 有','邱美玲, 女, 射手, 無','曾冠廷, 男, 雙魚, 無','廖思穎, 女, 獅子, 有','賴柏翰, 男, 巨蟹, 無','周筱涵, 女, 天蠍, 無','徐建志, 男, 水瓶, 無','葉家瑜, 女, 金牛, 無','蘇彥廷, 男, 天秤, 有','莊雅筑, 女, 雙魚, 無','呂明哲, 男, 摩羯, 無','江冠宇, 男, 牡羊, 無','何承翰, 男, 處女, 無','羅國峰, 男, 巨蟹, 有','高宇翔, 男, 摩羯, 無','潘俊廷, 男, 處女, 無'].join('\n');
+var SAMPLE=['中文名字, 英文名字, 星座, 血型, 打過皮克球, 性別','王小明, Ming, 牡羊, A, 有, 男','陳怡君, Iris, 巨蟹, O, 無, 女','林志豪, Howard, 天蠍, B, 無, 男','黃雅婷, Tina, 摩羯, A, 有, 女','張家豪, Kevin, 雙子, O, 無, 男','李佩珊, Sandy, 處女, AB, 無, 女','吳宗翰, Hank, 射手, O, 有, 男','蔡依婷, Elaine, 雙魚, A, 無, 女','劉建宏, Jimmy, 獅子, B, 無, 男','楊淑芬, Fen, 金牛, O, 有, 女','許文傑, Jay, 雙子, A, 無, 男','鄭雅雯, Wendy, 天蠍, B, 無, 女','謝承恩, Ethan, 水瓶, O, 無, 男','郭欣怡, Cindy, 雙子, A, 無, 女','洪俊宇, Jerry, 天秤, AB, 有, 男','邱美玲, Melody, 射手, O, 無, 女','曾冠廷, Kenny, 雙魚, A, 無, 男','廖思穎, Sylvia, 獅子, B, 有, 女','賴柏翰, Bob, 巨蟹, O, 無, 男','周筱涵, Hannah, 天蠍, A, 無, 女','徐建志, Jason, 水瓶, B, 無, 男','葉家瑜, Joyce, 金牛, O, 無, 女','蘇彥廷, Ian, 天秤, A, 有, 男','莊雅筑, Ruby, 雙魚, AB, 無, 女','呂明哲, Jeff, 摩羯, O, 無, 男','江冠宇, Leo, 牡羊, B, 無, 男','何承翰, Henry, 處女, A, 無, 男','羅國峰, Frank, 巨蟹, O, 有, 男','高宇翔, Sean, 摩羯, A, 無, 男','潘俊廷, Patrick, 處女, B, 無, 男'].join('\n');
 var CFG={
   balance:{names:['A 隊','B 隊','C 隊','D 隊'],subs:['','','',''],colors:['var(--court)','var(--green)','var(--warm)','#8a6bbf']},
-  star:{names:['火象隊','土象隊','風象隊','水象隊'],subs:['牡羊・獅子・射手','金牛・處女・摩羯','雙子・天秤・水瓶','巨蟹・天蠍・雙魚'],colors:['var(--warm)','#9a7b3c','var(--court)','var(--green)']}
+  star:{names:['火象隊','土象隊','風象隊','水象隊'],subs:['牡羊・獅子・射手','金牛・處女・摩羯','雙子・天秤・水瓶','巨蟹・天蠍・雙魚'],colors:['var(--warm)','#9a7b3c','var(--court)','var(--green)']},
+  blood:{names:['A 型隊','B 型隊','O 型隊','AB 型隊'],subs:['','','',''],colors:['var(--warm)','var(--court)','var(--green)','#8a6bbf']}
 };
 var mode='balance',rosterEl=document.getElementById('roster');
-rosterEl.value=load('pb_roster3',SAMPLE);
-rosterEl.addEventListener('input',function(){save('pb_roster3',rosterEl.value)});
-function renderMap(){var c=CFG[mode],el=document.getElementById('modeMap');el.innerHTML=mode==='balance'?'':c.names.map(function(n,i){return '<div><b>'+n+'</b>'+c.subs[i]+'</div>'}).join('')}
+rosterEl.value=load('pb_roster4',SAMPLE);
+rosterEl.addEventListener('input',function(){save('pb_roster4',rosterEl.value)});
+function renderMap(){var c=CFG[mode],el=document.getElementById('modeMap');el.innerHTML=mode!=='star'?'':c.names.map(function(n,i){return '<div><b>'+n+'</b>'+c.subs[i]+'</div>'}).join('')}
 document.querySelectorAll('.mode').forEach(function(b){b.addEventListener('click',function(){mode=b.dataset.mode;document.querySelectorAll('.mode').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});renderMap();run()})});
 
 var ELEM={'牡羊':0,'獅子':0,'射手':0,'金牛':1,'處女':1,'摩羯':1,'雙子':2,'天秤':2,'水瓶':2,'巨蟹':3,'天蠍':3,'雙魚':3};
 var ALIAS={'白羊':'牡羊','人馬':'射手','山羊':'摩羯','寶瓶':'水瓶','天平':'天秤','室女':'處女'};
 function signOf(z){z=String(z||'');for(var k in ALIAS){if(z.indexOf(k)>-1)return ALIAS[k]}for(var e in ELEM){if(z.indexOf(e)>-1)return e}return null}
-function parse(t){return t.split(/\n/).map(function(l){return l.trim()}).filter(Boolean).map(function(l){var p=l.split(/[,，、\t]/).map(function(x){return x.trim()});return{name:p[0],g:/女|f/i.test(p[1]||'')?'F':'M',sign:signOf(p[2]),exp:/有|y|是/i.test(p[3]||''),moved:false}}).filter(function(p){return p.name})}
+function bloodOf(z){z=String(z||'').toUpperCase().replace(/\s|型/g,'');if(/^AB/.test(z))return 3;if(/^A/.test(z))return 0;if(/^B/.test(z))return 1;if(/^O/.test(z))return 2;return null}
+var BLOOD=['A','B','O','AB'];
+function parse(t){return t.split(/\n/).map(function(l){return l.trim()}).filter(Boolean).map(function(l){var p=l.split(/[,，\t]/).map(function(x){return x.trim()});
+  var gs=p[5]||'';return{name:p[0],en:p[1]||'',sign:signOf(p[2]),blood:bloodOf(p[3]),exp:/^(有|y|yes|是|v|會)/i.test(p[4]||''),g:/女|^f/i.test(gs)?'F':(/男|^m/i.test(gs)?'M':'U'),moved:false}})
+  .filter(function(p){return p.name&&!/中文|姓名|名字/.test(p.name)})}
 function cntG(t,g){return t.filter(function(p){return p.g===g}).length}
 function balanced(people){
   var teams=[[],[],[],[]],ord=function(l){return shuffle(l.filter(function(p){return p.exp})).concat(shuffle(l.filter(function(p){return !p.exp})))};
-  var seq=ord(people.filter(function(p){return p.g==='F'})).concat(ord(people.filter(function(p){return p.g==='M'})));
+  var seq=ord(people.filter(function(p){return p.g==='F'})).concat(ord(people.filter(function(p){return p.g!=='F'})));
   var pos=0,dir=1;seq.forEach(function(p){teams[pos].push(p);pos+=dir;if(pos===4){pos=3;dir=-1}else if(pos===-1){pos=0;dir=1}});
   return teams;
 }
 function rebalance(teams,N,F){
-  var sizes=[0,1,2,3].map(function(i){return Math.floor(N/4)+(i<N%4?1:0)}),sizeT=[],fT=[];
-  [0,1,2,3].sort(function(a,b){return teams[b].length-teams[a].length}).forEach(function(ti,k){sizeT[ti]=sizes[k]});
-  [0,1,2,3].sort(function(a,b){return sizeT[b]-sizeT[a]||cntG(teams[b],'F')-cntG(teams[a],'F')}).forEach(function(ti,k){fT[ti]=Math.floor(F/4)+(k<F%4?1:0)});
-  ['F','M'].forEach(function(g){
-    var target=function(i){return g==='F'?fT[i]:sizeT[i]-fT[i]},guard=0;
-    while(guard++<200){
-      var over=[0,1,2,3].filter(function(i){return cntG(teams[i],g)>target(i)}),under=[0,1,2,3].filter(function(i){return cntG(teams[i],g)<target(i)});
-      if(!over.length||!under.length)break;
-      var from=teams[over[0]],c=from.filter(function(p){return p.g===g}),pick=c[Math.floor(Math.random()*c.length)];
-      from.splice(from.indexOf(pick),1);pick.moved=true;teams[under[0]].push(pick);
-    }
-  });
+  var mv=function(from,to,pred){var c=teams[from].filter(pred);if(!c.length)return false;var pick=c[Math.floor(Math.random()*c.length)];teams[from].splice(teams[from].indexOf(pick),1);pick.moved=true;teams[to].push(pick);return true};
+  var guard=0;
+  // 1. 女生平均（相差不超過 1 人）
+  while(guard++<200){
+    var fc=[0,1,2,3].map(function(i){return cntG(teams[i],'F')});
+    var hi=fc.indexOf(Math.max.apply(null,fc)),lo=fc.indexOf(Math.min.apply(null,fc));
+    if(fc[hi]-fc[lo]<=1)break;
+    mv(hi,lo,function(p){return p.g==='F'});
+  }
+  // 2. 總人數平均（相差不超過 1 人），只移動非女生，女生分布不變
+  guard=0;
+  while(guard++<200){
+    var sz=[0,1,2,3].map(function(i){return teams[i].length});
+    var h=sz.indexOf(Math.max.apply(null,sz)),l=sz.indexOf(Math.min.apply(null,sz));
+    if(sz[h]-sz[l]<=1)break;
+    if(!mv(h,l,function(p){return p.g!=='F'}))mv(h,l,function(){return true});
+  }
   return teams;
 }
 var lastTeams=null;
@@ -641,24 +652,24 @@ function run(){
   if(mode==='balance')teams=balanced(people);
   else{
     teams=[[],[],[],[]];var unknown=[];
-    people.forEach(function(p){var k=p.sign?ELEM[p.sign]:null;if(k==null)unknown.push(p);else teams[k].push(p)});
+    people.forEach(function(p){var k=mode==='star'?(p.sign?ELEM[p.sign]:null):p.blood;if(k==null)unknown.push(p);else teams[k].push(p)});
     unknown.forEach(function(p){p.moved=true;teams[[0,1,2,3].sort(function(a,b){return teams[a].length-teams[b].length})[0]].push(p)});
-    if(unknown.length)warn.push(unknown.map(function(p){return p.name}).join('、')+' 沒有填星座，先放進人數少的隊。');
+    if(unknown.length)warn.push(unknown.map(function(p){return p.name}).join('、')+' 沒有填'+(mode==='star'?'星座':'血型')+'，先放進人數少的隊。');
     teams=rebalance(teams,N,F);
   }
-  if(F<8)warn.push('女生只有 '+F+' 人，有些隊伍的女雙要由男生代打。');
+  var U=cntG(people,'U');if(U===N)warn.push('名單沒有填性別，分組時無法平均分配女生，排女雙、混雙前請各隊確認。');else if(F<8)warn.push('女生只有 '+F+' 人，有些隊伍的女雙要由男生代打。');
   document.getElementById('warn').innerHTML=warn.map(esc).join('<br>');
   lastTeams=teams;renderTeams(teams);
 }
 function renderTeams(teams){
   var c=CFG[mode];
   document.getElementById('teams').innerHTML=teams.map(function(t,i){
-    var f=cntG(t,'F'),e=t.filter(function(p){return p.exp}).length;
+    var f=cntG(t,'F'),m=cntG(t,'M'),e=t.filter(function(p){return p.exp}).length;
     var items=t.slice().sort(function(a,b){return a.g>b.g?1:-1}).map(function(p){
-      var meta=mode==='star'?(p.sign?p.sign+'座':'—'):(p.exp?'打過球':'');
-      return '<li><span>'+esc(p.name)+' <small>'+(p.g==='F'?'女':'男')+'</small>'+(p.moved?'<span class="tag-x">交換生</span>':'')+'</span><small>'+meta+'</small></li>';
+      var meta=mode==='star'?(p.sign?p.sign+'座':'—'):mode==='blood'?(p.blood!=null?BLOOD[p.blood]+' 型':'—'):(p.exp?'打過皮克球':'');
+      return '<li><span>'+esc(p.name)+(p.en?' <small>'+esc(p.en)+'</small>':'')+(p.g!=='U'?' <small>'+(p.g==='F'?'女':'男')+'</small>':'')+(p.moved?'<span class="tag-x">交換生</span>':'')+'</span><small>'+meta+'</small></li>';
     }).join('');
-    return '<div class="team" style="--tc:'+c.colors[i]+'"><h3>'+c.names[i]+'</h3><div class="sub">'+(c.subs[i]||'&nbsp;')+'</div><div class="stats"><span class="num">'+t.length+' 人</span><span>男 '+(t.length-f)+'・女 '+f+'</span><span>打過球 '+e+'</span></div><ul class="members">'+items+'</ul></div>';
+    return '<div class="team" style="--tc:'+c.colors[i]+'"><h3>'+c.names[i]+'</h3><div class="sub">'+(c.subs[i]||'&nbsp;')+'</div><div class="stats"><span class="num">'+t.length+' 人</span>'+(f+m?'<span>男 '+m+'・女 '+f+'</span>':'')+'<span>打過皮克球 '+e+'</span></div><ul class="members">'+items+'</ul></div>';
   }).join('');
   var any=teams.some(function(t){return t.some(function(p){return p.moved})});
   document.getElementById('xNote').textContent=mode==='balance'?'每按一次「分組」都會重新抽。':(any?'「交換生」是為了讓人數和男女平均，被調到別隊的人。':'');
@@ -667,7 +678,7 @@ function renderTeams(teams){
 document.getElementById('run').onclick=run;
 document.getElementById('copy').onclick=function(){
   if(!lastTeams)return;var c=CFG[mode],msg=document.getElementById('copyMsg');
-  var txt=lastTeams.map(function(t,i){return c.names[i]+'（'+t.length+' 人）：'+t.map(function(p){return p.name}).join('、')}).join('\n');
+  var txt=lastTeams.map(function(t,i){return c.names[i]+'（'+t.length+' 人）：'+t.map(function(p){return p.name+(p.en?' '+p.en:'')}).join('、')}).join('\n');
   var fb=function(){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');msg.textContent='已複製'}catch(e){msg.textContent='請手動選取複製'}document.body.removeChild(ta)};
   try{navigator.clipboard.writeText(txt).then(function(){msg.textContent='已複製'},fb)}catch(e){fb()}
 };
