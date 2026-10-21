@@ -214,7 +214,7 @@ footer a{color:var(--court)}
 .bk b{display:block;font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.06em}
 .bk.final{border:2px solid var(--court);background:var(--court-soft);text-align:center}
 .arrow{color:var(--muted);font-size:20px}
-.draws{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.draws{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
 .draw{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;min-width:0}
 .draw h4{margin:0 0 6px;font-size:15px}
 .draw p{margin:2px 0}
@@ -226,7 +226,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 .phase-row h3{font-size:17px;margin-bottom:2px}
 .phase-row p{font-size:14px;color:var(--muted)}
 .phase-row.hl{border-color:var(--court);border-width:2px}
-@media (max-width:860px){.draws{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){.draws{grid-template-columns:1fr}}
 @media (max-width:520px){.draws{grid-template-columns:1fr}.phase-row{grid-template-columns:1fr;gap:4px}.bracket{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}}
 </style>
 
@@ -306,9 +306,9 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="controls"><label for="start">開始時間</label><input id="start" type="time" value="14:00"><span id="range" class="num" style="font-size:17px">14:00–17:00</span></div>
   <div class="phase-list">
     <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3>開場、分組、暖身</h3><p>14:00 前完成報到。公布分組、取隊名、喊隊呼，全體暖身與規則說明。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練帶練。最後 5 分鐘各隊排好 7 位先發與替補名單。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、抽籤</h3><p>四個項目各自抽出準決賽對戰組合。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙、球場 4 單打，同時進行。每個項目打 3 場：兩場準決賽＋一場決賽。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練帶練。最後 5 分鐘各隊排好 6 位先發與替補名單。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、抽籤</h3><p>三個項目各自抽出準決賽對戰組合。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙，同時進行；球場 4 給下一場選手熱身與替補練習。每個項目打 3 場：兩場準決賽＋一場決賽。</p></div></div>
     <div class="phase-row"><div class="t" data-r="117,127"><small>10 分鐘</small></div><div><h3>中場休息</h3><p>補水、公布團體賽積分，布置歡樂遊戲。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="157,170"><small>13 分鐘</small></div><div><h3>最後加分賽｜躲避球</h3><p>依目前積分：第 1 名 vs 第 3 名、第 2 名 vs 第 4 名，兩場同時開打。內場存活幾人就加幾分。</p></div></div>
@@ -335,7 +335,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <div class="ct main"><b>混雙</b>各隊 1 男 1 女</div>
     <div class="ct main"><b>女雙</b>各隊 2 女</div>
     <div class="ct main"><b>男雙</b>各隊 2 男</div>
-    <div class="ct main"><b>單打</b>不分男女</div>
+    <div class="ct side"><b>熱身練習區</b>下一場選手、替補</div>
 
     <div class="cm-phase"><span class="num" data-r="127,157"></span>歡樂趣味</div>
     <div class="ct fun"><b>遊戲一</b>發球打靶</div>
@@ -354,8 +354,8 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 <section id="match">
   <div class="head">
     <div class="eyebrow">TEAM MATCH</div>
-    <h2>團體賽：四個項目同時開打</h2>
-    <p class="muted">每隊 7 位先發：混雙 2 人、女雙 2 人、男雙 2 人、單打 1 人。其他隊員當替補，每場比賽可以換人一次，讓大家都有機會上場。</p>
+    <h2>團體賽：三個項目同時開打</h2>
+    <p class="muted">每隊 6 位先發：混雙 1 男 1 女、女雙 2 女、男雙 2 男。其他隊員當替補，準決賽一定要上場。</p>
   </div>
 
   <h3>每個項目都打 3 場</h3>
@@ -385,13 +385,13 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <ul class="rules">
       <li>每一球都算分，先到 11 分或 10 分鐘時間到分數高的贏。</li>
       <li>平手時再打一球決勝。</li>
-      <li><b>換人：</b>每一場（準決賽、決賽）每個項目可以換人一次，在死球時向裁判示意即可，換下的人該場不能再上。</li><li>人數多的隊伍，建議替補輪流上場，讓每個人當天至少打到一場。實際替補人數依當天出席彈性調配。</li>
+      <li><b>換人：</b>每一場（準決賽、決賽）每個項目可以換人一次，在死球時向裁判示意即可，換下的人該場不能再上。</li><li><b>人人上場：</b>準決賽時每位隊員都一定要上場，先發或換人上場都算。替補男生可以在男雙或混雙換上場。</li>
       <li>女生不足的隊伍，女雙可以由男生代打。</li>
     </ul>
   </div>
 
   <h3 style="margin-top:24px">抽籤</h3>
-  <p class="small">按下按鈕，四個項目各自抽出準決賽對戰。</p>
+  <p class="small">按下按鈕，三個項目各自抽出準決賽對戰。</p>
   <div class="g-actions"><button class="btn" id="drawBtn" type="button">抽籤</button></div>
   <div class="draws" id="draws"></div>
 </section>
@@ -437,7 +437,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <ul class="rules">
       <li>每半場 5 分鐘，時間到時內場還剩幾個人，那一隊就加幾分。</li>
       <li>被打中就出場，在場邊等候。球先落地或打到頭部不算。</li><li><b>接球救人：</b>內場接住外場丟來的球，可以救回一位已出場的隊友。</li><li><b>男生限制：</b>外場的男生只能用雙手丟球。</li>
-      <li>兩隊上場人數要一樣：7 人隊對 8 人隊時，8 人隊派 7 人上場，才公平。</li>
+      <li>兩隊上場人數要一樣：人數不同時，人多的隊伍派出和對方相同的人數，才公平。</li>
       <li>每場只用 1 顆軟式泡棉球，只打肩膀以下。</li>
     </ul>
   </div>
@@ -447,7 +447,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="head">
     <div class="eyebrow">POINTS & REWARDS</div>
     <h2>積分與獎勵</h2>
-    <p class="muted">四個比賽項目加兩個遊戲，每項冠軍 5 分、亞軍 3 分。最後再加上躲避球加分賽的內場存活人數，總分最高的就是團隊總冠軍。</p>
+    <p class="muted">三個比賽項目加兩個遊戲，每項冠軍 5 分、亞軍 3 分。最後再加上躲避球加分賽的內場存活人數，總分最高的就是團隊總冠軍。</p>
   </div>
   <div class="simple-score">
     <div><b>5</b><span>冠軍</span></div>
@@ -461,7 +461,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <tbody id="picks"></tbody>
   </table></div>
   <div class="tablebox" style="margin-top:12px"><table>
-    <thead><tr><th>隊伍</th><th>六項積分</th><th>躲避球加分</th><th>總分</th><th>排名</th></tr></thead>
+    <thead><tr><th>隊伍</th><th>五項積分</th><th>躲避球加分</th><th>總分</th><th>排名</th></tr></thead>
     <tbody id="totals"></tbody>
   </table></div>
   <div class="g-actions"><button class="btn ghost" id="clearBoard" type="button">清空計分板</button><span id="clearConfirm" class="small" hidden>確定清空？<button class="btn" id="clearYes" type="button" style="margin-left:6px;padding:4px 12px">清空</button></span></div>
@@ -553,7 +553,7 @@ function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()
 var teamNames=['A 隊','B 隊','C 隊','D 隊'];
 
 /* 抽籤 */
-var EVENTS=['混雙（球場 1）','女雙（球場 2）','男雙（球場 3）','單打（球場 4）'];
+var EVENTS=['混雙（球場 1）','女雙（球場 2）','男雙（球場 3）'];
 function drawAll(){
   document.getElementById('draws').innerHTML=EVENTS.map(function(ev){
     var t=shuffle(teamNames.slice());
@@ -563,8 +563,8 @@ function drawAll(){
 document.getElementById('drawBtn').onclick=drawAll;
 
 /* 計分板 */
-var ITEMS=['混雙','女雙','男雙','單打','發球打靶','接教練發球'];
-var picks=load('pb_picks3',{});
+var ITEMS=['混雙','女雙','男雙','發球打靶','接教練發球'];
+var picks=load('pb_picks4',{});
 function renderPicks(){
   var opts=function(sel){return '<option value="">—</option>'+teamNames.map(function(n,i){return '<option value="'+i+'"'+(String(sel)===String(i)?' selected':'')+'>'+esc(n)+'</option>'}).join('')};
   document.getElementById('picks').innerHTML=ITEMS.map(function(it,k){
@@ -592,10 +592,10 @@ document.getElementById('totals').addEventListener('change',function(e){
 });
 document.getElementById('picks').addEventListener('change',function(e){
   var m=e.target.id.match(/^([wr])(\d)$/);if(!m)return;
-  var k=+m[2];picks[k]=picks[k]||{};picks[k][m[1]]=e.target.value;save('pb_picks3',picks);calc();
+  var k=+m[2];picks[k]=picks[k]||{};picks[k][m[1]]=e.target.value;save('pb_picks4',picks);calc();
 });
 document.getElementById('clearBoard').onclick=function(){document.getElementById('clearConfirm').hidden=false};
-document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks3',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
+document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks4',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
 
 /* 分組器 */
 var SAMPLE=["中文名字, 英文名字, 星座, 血型, 打過皮克球, 性別", "劉庭妤, vivian, 獅子座, O 型, 沒有", "張煦, shu.chang, 獅子座, 不確定, 沒有", "彭譯蔚, Toby Peng, 射手座, AB 型, 沒有", "洪立恩, Andy, 獅子座, A 型, 有", "王韻琦, Regina Wang, 射手座, O 型, 沒有", "陳憶雯, Mag Chen, 獅子座, B 型, 沒有", "陳柏凱, Bart Chen, 金牛座, A 型, 沒有", "羅愫, Su, 巨蟹座, A 型, 有", "鄒凱宇, Kevin Tsou, 摩羯座, A 型, 沒有", "蔡政霖, Lewis Tsai, 摩羯座, B 型, 有", "劉昱妏, Teresa Liu, 射手座, B 型, 沒有", "張雅筑, Audrey, 摩羯座, O 型, 沒有", "鄺璟珩, Karen Kwong, 射手座, A 型, 沒有", "胡庭瑋, Howard Hu, 獅子座, O 型, 沒有", "楊至靜, Joce Yang, 雙魚座, A 型, 沒有", "吳承軒, Nick Wu, 巨蟹座, A 型, 沒有", "張詠琦, Sibyl Chang, 天蠍座, B 型, 沒有", "高靖萍, Chingping Kao, 獅子座, O 型, 沒有", "方鈺雯, Vivi Fang, 天秤座, O 型, 沒有", "蔡承翰, Tony Tsai, 獅子座, O 型, 沒有", "陳介立, Bass Chen, 雙子座, A 型, 沒有", "孫郁喬, Chiao Sun, 巨蟹座, B 型, 沒有, 男", "蔡孟軒, Stan Tsai, 雙魚座, A 型, 沒有", "曾煜祐, Eric Zeng, 摩羯座, A 型, 沒有", "李長穎, David Lee, 處女座, AB 型, 沒有", "黃志雄, Jonathan Huang, 摩羯座, O 型, 沒有", "許文縣, Vincent Hsu, 處女座, A 型, 沒有", "陳昭樺, Cathy, 牡羊座, B 型, 沒有", "李令德, Dexter Lee, 射手座, A 型, 沒有"].join('\n');
