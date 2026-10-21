@@ -493,7 +493,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   </div>
   <div id="modeMap" class="mapline"></div>
   <label for="roster" style="display:block;margin-top:16px;font-weight:700;font-size:14px">名單（每行一人）</label>
-  <p class="small">欄位順序：<b>中文名字, 英文名字, 星座, 血型, 有沒有打過皮克球（有/無）, 性別（選填）</b>。可以直接從 Excel 複製整欄貼上，第一行如果是標題會自動略過。性別用來平均分配女雙、混雙的人選；沒填的話會依中英文名字推測，猜錯或看不出來的再補填即可。下方是範例名單。</p>
+  <p class="small">欄位順序：<b>中文名字, 英文名字, 星座, 血型, 有沒有打過皮克球（有/無）, 性別（選填）</b>。可以直接從 Excel 複製整欄貼上，第一行如果是標題會自動略過。性別用來平均分配女雙、混雙的人選；沒填的話會依中英文名字推測，猜錯或看不出來的再補填即可。下方已放入 11/23 出席名單（29 人）。</p>
   <textarea id="roster" spellcheck="false"></textarea>
   <div class="g-actions">
     <button class="btn" id="run" type="button">分組</button>
@@ -598,7 +598,7 @@ document.getElementById('clearBoard').onclick=function(){document.getElementById
 document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks3',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
 
 /* 分組器 */
-var SAMPLE=['中文名字, 英文名字, 星座, 血型, 打過皮克球','王小明, Ming, 牡羊, A, 有','陳怡君, Iris, 巨蟹, O, 無','林志豪, Howard, 天蠍, B, 無','黃雅婷, Tina, 摩羯, A, 有','張家豪, Kevin, 雙子, O, 無','李佩珊, Sandy, 處女, AB, 無','吳宗翰, Hank, 射手, O, 有','蔡依婷, Elaine, 雙魚, A, 無','劉建宏, Jimmy, 獅子, B, 無','楊淑芬, Fen, 金牛, O, 有','許文傑, Jay, 雙子, A, 無','鄭雅雯, Wendy, 天蠍, B, 無','謝承恩, Ethan, 水瓶, O, 無','郭欣怡, Cindy, 雙子, A, 無','洪俊宇, Jerry, 天秤, AB, 有','邱美玲, Melody, 射手, O, 無','曾冠廷, Kenny, 雙魚, A, 無','廖思穎, Sylvia, 獅子, B, 有','賴柏翰, Bob, 巨蟹, O, 無','周筱涵, Hannah, 天蠍, A, 無','徐建志, Jason, 水瓶, B, 無','葉家瑜, Joyce, 金牛, O, 無','蘇彥廷, Ian, 天秤, A, 有','莊雅筑, Ruby, 雙魚, AB, 無','呂明哲, Jeff, 摩羯, O, 無','江冠宇, Leo, 牡羊, B, 無','何承翰, Henry, 處女, A, 無','羅國峰, Frank, 巨蟹, O, 有','高宇翔, Sean, 摩羯, A, 無','潘俊廷, Patrick, 處女, B, 無'].join('\n');
+var SAMPLE=["中文名字, 英文名字, 星座, 血型, 打過皮克球, 性別", "劉庭妤, vivian, 獅子座, O 型, 沒有", "張煦, shu.chang, 獅子座, 不確定, 沒有", "彭譯蔚, Toby Peng, 射手座, AB 型, 沒有", "洪立恩, Andy, 獅子座, A 型, 有", "王韻琦, Regina Wang, 射手座, O 型, 沒有", "陳憶雯, Mag Chen, 獅子座, B 型, 沒有", "陳柏凱, Bart Chen, 金牛座, A 型, 沒有", "羅愫, Su, 巨蟹座, A 型, 有", "鄒凱宇, Kevin Tsou, 摩羯座, A 型, 沒有", "蔡政霖, Lewis Tsai, 摩羯座, B 型, 有", "劉昱妏, Teresa Liu, 射手座, B 型, 沒有", "張雅筑, Audrey, 摩羯座, O 型, 沒有", "鄺璟珩, Karen Kwong, 射手座, A 型, 沒有", "胡庭瑋, Howard Hu, 獅子座, O 型, 沒有", "楊至靜, Joce Yang, 雙魚座, A 型, 沒有", "吳承軒, Nick Wu, 巨蟹座, A 型, 沒有", "張詠琦, Sibyl Chang, 天蠍座, B 型, 沒有", "高靖萍, Chingping Kao, 獅子座, O 型, 沒有", "方鈺雯, Vivi Fang, 天秤座, O 型, 沒有", "蔡承翰, Tony Tsai, 獅子座, O 型, 沒有", "陳介立, Bass Chen, 雙子座, A 型, 沒有", "孫郁喬, Chiao Sun, 巨蟹座, B 型, 沒有, 男", "蔡孟軒, Stan Tsai, 雙魚座, A 型, 沒有", "曾煜祐, Eric Zeng, 摩羯座, A 型, 沒有", "李長穎, David Lee, 處女座, AB 型, 沒有", "黃志雄, Jonathan Huang, 摩羯座, O 型, 沒有", "許文縣, Vincent Hsu, 處女座, A 型, 沒有", "陳昭樺, Cathy, 牡羊座, B 型, 沒有", "李令德, Dexter Lee, 射手座, A 型, 沒有"].join('\n');
 var CFG={
   balance:{names:['A 隊','B 隊','C 隊','D 隊'],subs:['','','',''],colors:['var(--court)','var(--green)','var(--warm)','#8a6bbf']},
   star:{names:['火象隊','土象隊','風象隊','水象隊'],subs:['牡羊・獅子・射手','金牛・處女・摩羯','雙子・天秤・水瓶','巨蟹・天蠍・雙魚'],colors:['var(--warm)','#9a7b3c','var(--court)','var(--green)']},
@@ -606,8 +606,8 @@ var CFG={
   blood:{names:['A 型隊','B 型隊','O 型隊','AB 型隊'],subs:['','','',''],colors:['var(--warm)','var(--court)','var(--green)','#8a6bbf']}
 };
 var mode='balance',rosterEl=document.getElementById('roster');
-rosterEl.value=load('pb_roster5',SAMPLE);
-rosterEl.addEventListener('input',function(){save('pb_roster5',rosterEl.value)});
+rosterEl.value=load('pb_roster6',SAMPLE);
+rosterEl.addEventListener('input',function(){save('pb_roster6',rosterEl.value)});
 function renderMap(){var c=CFG[mode],el=document.getElementById('modeMap');el.innerHTML=mode!=='star'?'':c.names.map(function(n,i){return '<div><b>'+n+'</b>'+c.subs[i]+'</div>'}).join('')}
 document.querySelectorAll('.mode').forEach(function(b){b.addEventListener('click',function(){mode=b.dataset.mode;document.querySelectorAll('.mode').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});renderMap();run()})});
 
