@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSC Team Building 記分表</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap">
+<style>
+:root{--ink:#14262b;--muted:#5b6b6f;--line:#9fb0ae;--soft:#eef3f2;--accent:#1e5a78;--bg:#e9eeed;--paper:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.toolbar{position:sticky;top:0;z-index:2;background:#14262b;color:#fff;padding:12px max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.toolbar b{font-size:15px}.toolbar span{font-size:13px;color:#c9d4d2}
+.toolbar button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:8px 18px;background:#e6f04a;color:#14262b;cursor:pointer}
+.toolbar a{color:#c9d4d2;font-size:13px}
+.pages{display:grid;gap:16px;justify-items:center;padding:20px 16px 40px}
+.sheet{width:210mm;max-width:100%;min-height:297mm;background:var(--paper);padding:14mm 14mm 12mm;box-shadow:0 2px 10px rgba(0,0,0,.12);display:flex;flex-direction:column;gap:5mm}
+.sh-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;border-bottom:2.5px solid var(--ink);padding-bottom:3mm}
+.sh-kind{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--accent)}
+.sh-head h2{margin:2px 0 0;font-size:28px;font-weight:900}
+.sh-meta{display:flex;gap:14px;text-align:right}
+.sh-meta span{display:block;font-size:11px;color:var(--muted)}.sh-meta b{font-size:17px}
+.sh-sub{margin:0;font-size:13px;color:var(--muted)}
+h3{margin:2mm 0 0;font-size:15px}
+.versus{display:grid;grid-template-columns:1fr auto 1fr;gap:6mm;align-items:start}
+.vs{align-self:center;font-weight:900;font-size:22px;color:var(--muted)}
+.side{border:1.5px solid var(--line);border-radius:6px;padding:4mm;display:flex;flex-direction:column;gap:3mm;min-width:0}
+.side-name{font-size:24px;font-weight:900;min-height:9mm;display:flex;align-items:center}
+.blank-line{display:inline-block;width:100%;min-width:40mm;border-bottom:1.5px solid var(--ink);height:7mm}
+.line{display:flex;gap:6px;align-items:flex-end;font-size:12px;color:var(--muted)}.line b{flex:1;border-bottom:1px solid var(--line);height:7mm}
+.tally-label{font-size:11px;color:var(--muted)}
+.tally{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5mm}
+.box{border:1.2px solid var(--line);border-radius:3px;height:14mm;display:flex;align-items:flex-start;padding:1px 3px}
+.box i{font-style:normal;font-size:10px;color:var(--muted)}
+.final-row{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;flex-wrap:wrap}
+.score-box{display:inline-block;width:18mm;height:11mm;border:2px solid var(--ink);border-radius:4px}
+table.grid{width:100%;border-collapse:collapse;font-size:13px}
+.grid th,.grid td{border:1px solid var(--line);padding:0 3mm;height:10mm;text-align:left}
+.grid th{background:var(--soft);font-size:12px;height:8mm}
+.grid.tight td{height:7.2mm}.grid.big td{height:14mm;font-size:15px}
+.grid td.nm{font-weight:700;white-space:nowrap}
+.fun-team{display:flex;flex-direction:column;gap:2mm}
+.result{margin-top:auto;display:flex;gap:8mm;flex-wrap:wrap;align-items:flex-end;font-size:13px;font-weight:700}
+.result div{display:flex;align-items:flex-end;gap:6px;flex:1;min-width:45mm}
+.result b{flex:1;border-bottom:1.5px solid var(--ink);height:8mm;min-width:20mm}.result b.short{flex:0 0 14mm}
+.result em{font-style:normal}
+.foot{margin:0;font-size:11px;color:var(--muted)}
+@media screen and (max-width:820px){.sheet{min-height:auto;padding:16px}.versus{grid-template-columns:1fr}.vs{justify-self:center}}
+@page{size:A4 portrait;margin:0}
+@media print{body{background:#fff}.toolbar{display:none}.pages{display:block;padding:0}.sheet{box-shadow:none;width:210mm;height:297mm;min-height:0;break-after:page;page-break-after:always;overflow:hidden}.sheet:last-child{break-after:auto}}
+</style></head><body>
+<div class="toolbar"><div><b>11/23 Team Building 記分表</b><br><span>共 16 張，A4 直式。列印時邊界選「無」，並勾選「背景圖形」。</span></div>
+<div style="display:flex;gap:14px;align-items:center"><a href="./">回活動頁</a><button type="button" onclick="window.print()">列印全部</button></div></div>
+<main class="pages">
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>混雙｜準決賽 1</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 1</b></div><div><span>時間</span><b>15:15–15:25</b></div></div></header>
+  <p class="sh-sub">先到 11 分，或 10 分鐘時間到分數高者勝。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name">飛達冠軍隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name">頭好壯壯隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td>飛達冠軍隊</td><td></td><td></td><td></td></tr><tr><td>頭好壯壯隊</td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>女雙｜準決賽 1</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 2</b></div><div><span>時間</span><b>15:15–15:25</b></div></div></header>
+  <p class="sh-sub">先到 11 分，或 10 分鐘時間到分數高者勝。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name">飛達冠軍隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name">德心應手隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td>飛達冠軍隊</td><td></td><td></td><td></td></tr><tr><td>德心應手隊</td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>男雙｜準決賽 1</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 3</b></div><div><span>時間</span><b>15:15–15:25</b></div></div></header>
+  <p class="sh-sub">先到 11 分，或 10 分鐘時間到分數高者勝。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name">德心應手隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name">拉高比分隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td>德心應手隊</td><td></td><td></td><td></td></tr><tr><td>拉高比分隊</td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>混雙｜準決賽 2</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 1</b></div><div><span>時間</span><b>15:28–15:38</b></div></div></header>
+  <p class="sh-sub">先到 11 分，或 10 分鐘時間到分數高者勝。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name">拉高比分隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name">德心應手隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td>拉高比分隊</td><td></td><td></td><td></td></tr><tr><td>德心應手隊</td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>女雙｜準決賽 2</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 2</b></div><div><span>時間</span><b>15:28–15:38</b></div></div></header>
+  <p class="sh-sub">先到 11 分，或 10 分鐘時間到分數高者勝。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name">拉高比分隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name">頭好壯壯隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td>拉高比分隊</td><td></td><td></td><td></td></tr><tr><td>頭好壯壯隊</td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>男雙｜準決賽 2</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 3</b></div><div><span>時間</span><b>15:28–15:38</b></div></div></header>
+  <p class="sh-sub">先到 11 分，或 10 分鐘時間到分數高者勝。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name">頭好壯壯隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name">飛達冠軍隊</div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td>頭好壯壯隊</td><td></td><td></td><td></td></tr><tr><td>飛達冠軍隊</td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>混雙｜決賽</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 1</b></div><div><span>時間</span><b>15:41–15:51</b></div></div></header>
+  <p class="sh-sub">準決賽兩場勝隊對戰，賽前填入隊名。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name"><span class="blank-line"></span></div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name"><span class="blank-line"></span></div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td></tr><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>女雙｜決賽</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 2</b></div><div><span>時間</span><b>15:41–15:51</b></div></div></header>
+  <p class="sh-sub">準決賽兩場勝隊對戰，賽前填入隊名。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name"><span class="blank-line"></span></div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name"><span class="blank-line"></span></div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td></tr><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">團體賽記分表</div><h2>男雙｜決賽</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 3</b></div><div><span>時間</span><b>15:41–15:51</b></div></div></header>
+  <p class="sh-sub">準決賽兩場勝隊對戰，賽前填入隊名。平手時再打一球決勝。</p>
+  <div class="versus"><div class="side"><div class="side-name"><span class="blank-line"></span></div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div><div class="vs">VS</div><div class="side"><div class="side-name"><span class="blank-line"></span></div><div class="line"><span>選手</span><b></b></div><div class="line"><span>選手</span><b></b></div>
+      <div class="tally-label">得分（每得 1 分劃掉一格）</div><div class="tally"><span class="box"><i>1</i></span><span class="box"><i>2</i></span><span class="box"><i>3</i></span><span class="box"><i>4</i></span><span class="box"><i>5</i></span><span class="box"><i>6</i></span><span class="box"><i>7</i></span><span class="box"><i>8</i></span><span class="box"><i>9</i></span><span class="box"><i>10</i></span><span class="box"><i>11</i></span><span class="box"><i>12</i></span><span class="box"><i>13</i></span><span class="box"><i>14</i></span><span class="box"><i>15</i></span></div>
+      <div class="final-row"><span>最後得分</span><b class="score-box"></b></div></div></div>
+  <h3>換人紀錄（每隊每場限一次）</h3>
+  <table class="grid"><thead><tr><th>隊伍</th><th>比分（當時）</th><th>換下</th><th>換上</th></tr></thead>
+  <tbody><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td></tr><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="result"><div><span>勝隊</span><b></b></div><div><span>比分</span><b class="short"></b><em>：</em><b class="short"></b></div><div><span>裁判簽名</span><b></b></div></div>
+  <p class="foot">冠軍 +5 分・亞軍 +3 分。比賽結束後交給計分台。</p>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">歡樂趣味記分表</div><h2>發球打靶｜第 1 輪</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 1</b></div><div><span>時間</span><b>16:09–16:22</b></div></div></header>
+  <p class="sh-sub">每人發 3 球，依落點記 1／3／5 分，出界或未過網記 0。平均最高的隊伍為冠軍（+5），第二名為亞軍（+3）。</p>
+  <div class="fun-team"><div class="side-name">德心應手隊</div>
+  <table class="grid tight"><thead><tr><th>隊員</th><th>第 1 球</th><th>第 2 球</th><th>第 3 球</th><th>小計</th></tr></thead><tbody><tr><td class="nm">李令德 Dexter Lee</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">羅愫 Su</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">鄺璟珩 Karen Kwong</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">李長穎 David Lee</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">蔡政霖 Lewis Tsai</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">蔡孟軒 Stan Tsai</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">劉昱妏 Teresa Liu</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">方鈺雯 Vivi Fang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">楊翔舜</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">蔡承翰 Tony Tsai</td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="final-row"><span>全隊合計</span><b class="score-box"></b><span>÷ 人數</span><b class="score-box"></b><span>＝ 平均</span><b class="score-box"></b></div></div><div class="fun-team"><div class="side-name">拉高比分隊</div>
+  <table class="grid tight"><thead><tr><th>隊員</th><th>第 1 球</th><th>第 2 球</th><th>第 3 球</th><th>小計</th></tr></thead><tbody><tr><td class="nm">陳靖偉 Raphael</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">劉庭妤 vivian</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">許文縣 Vincent Hsu</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">楊至靜 Joce Yang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">李孟翰 Martin</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">黃志雄 Jonathan Huang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">陳憶雯 Mag Chen</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">Min I 老師</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">張煦 shu.chang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm"></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="final-row"><span>全隊合計</span><b class="score-box"></b><span>÷ 人數</span><b class="score-box"></b><span>＝ 平均</span><b class="score-box"></b></div></div>
+  <div class="result"><div><span>裁判簽名</span><b></b></div></div>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">歡樂趣味記分表</div><h2>發球打靶｜第 2 輪</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 1</b></div><div><span>時間</span><b>16:24–16:37</b></div></div></header>
+  <p class="sh-sub">每人發 3 球，依落點記 1／3／5 分，出界或未過網記 0。平均最高的隊伍為冠軍（+5），第二名為亞軍（+3）。</p>
+  <div class="fun-team"><div class="side-name">頭好壯壯隊</div>
+  <table class="grid tight"><thead><tr><th>隊員</th><th>第 1 球</th><th>第 2 球</th><th>第 3 球</th><th>小計</th></tr></thead><tbody><tr><td class="nm">彭譯蔚 Toby Peng</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">洪立恩 Andy</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">胡庭瑋 Howard Hu</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">張雅筑 Audrey</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">張詠琦 Sibyl Chang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">陳昭樺 Cathy</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">陳介立 Bass Chen</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">DSC 新人</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">曾煜祐 Eric Zeng</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm"></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="final-row"><span>全隊合計</span><b class="score-box"></b><span>÷ 人數</span><b class="score-box"></b><span>＝ 平均</span><b class="score-box"></b></div></div><div class="fun-team"><div class="side-name">飛達冠軍隊</div>
+  <table class="grid tight"><thead><tr><th>隊員</th><th>第 1 球</th><th>第 2 球</th><th>第 3 球</th><th>小計</th></tr></thead><tbody><tr><td class="nm">邵懿文 Freda Shao</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">吳承軒 Nick Wu</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">高靖萍 Chingping Kao</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">孫郁喬 Chiao Sun</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">陳柏凱 Bart Chen</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">王韻琦 Regina Wang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">洪政道 Jack</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">Min</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">鄒凱宇 Kevin Tsou</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm"></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="final-row"><span>全隊合計</span><b class="score-box"></b><span>÷ 人數</span><b class="score-box"></b><span>＝ 平均</span><b class="score-box"></b></div></div>
+  <div class="result"><div><span>裁判簽名</span><b></b></div></div>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">歡樂趣味記分表</div><h2>接教練發球｜第 1 輪</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 2</b></div><div><span>時間</span><b>16:09–16:22</b></div></div></header>
+  <p class="sh-sub">每人接 3 球，打回對面場內記 ✓，失誤記 ✗。平均最高的隊伍為冠軍（+5），第二名為亞軍（+3）。</p>
+  <div class="fun-team"><div class="side-name">頭好壯壯隊</div>
+  <table class="grid tight"><thead><tr><th>隊員</th><th>第 1 球</th><th>第 2 球</th><th>第 3 球</th><th>成功數</th></tr></thead><tbody><tr><td class="nm">彭譯蔚 Toby Peng</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">洪立恩 Andy</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">胡庭瑋 Howard Hu</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">張雅筑 Audrey</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">張詠琦 Sibyl Chang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">陳昭樺 Cathy</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">陳介立 Bass Chen</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">DSC 新人</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">曾煜祐 Eric Zeng</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm"></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="final-row"><span>全隊合計</span><b class="score-box"></b><span>÷ 人數</span><b class="score-box"></b><span>＝ 平均</span><b class="score-box"></b></div></div><div class="fun-team"><div class="side-name">飛達冠軍隊</div>
+  <table class="grid tight"><thead><tr><th>隊員</th><th>第 1 球</th><th>第 2 球</th><th>第 3 球</th><th>成功數</th></tr></thead><tbody><tr><td class="nm">邵懿文 Freda Shao</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">吳承軒 Nick Wu</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">高靖萍 Chingping Kao</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">孫郁喬 Chiao Sun</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">陳柏凱 Bart Chen</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">王韻琦 Regina Wang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">洪政道 Jack</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">Min</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">鄒凱宇 Kevin Tsou</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm"></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="final-row"><span>全隊合計</span><b class="score-box"></b><span>÷ 人數</span><b class="score-box"></b><span>＝ 平均</span><b class="score-box"></b></div></div>
+  <div class="result"><div><span>裁判簽名</span><b></b></div></div>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">歡樂趣味記分表</div><h2>接教練發球｜第 2 輪</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 2</b></div><div><span>時間</span><b>16:24–16:37</b></div></div></header>
+  <p class="sh-sub">每人接 3 球，打回對面場內記 ✓，失誤記 ✗。平均最高的隊伍為冠軍（+5），第二名為亞軍（+3）。</p>
+  <div class="fun-team"><div class="side-name">德心應手隊</div>
+  <table class="grid tight"><thead><tr><th>隊員</th><th>第 1 球</th><th>第 2 球</th><th>第 3 球</th><th>成功數</th></tr></thead><tbody><tr><td class="nm">李令德 Dexter Lee</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">羅愫 Su</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">鄺璟珩 Karen Kwong</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">李長穎 David Lee</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">蔡政霖 Lewis Tsai</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">蔡孟軒 Stan Tsai</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">劉昱妏 Teresa Liu</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">方鈺雯 Vivi Fang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">楊翔舜</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">蔡承翰 Tony Tsai</td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="final-row"><span>全隊合計</span><b class="score-box"></b><span>÷ 人數</span><b class="score-box"></b><span>＝ 平均</span><b class="score-box"></b></div></div><div class="fun-team"><div class="side-name">拉高比分隊</div>
+  <table class="grid tight"><thead><tr><th>隊員</th><th>第 1 球</th><th>第 2 球</th><th>第 3 球</th><th>成功數</th></tr></thead><tbody><tr><td class="nm">陳靖偉 Raphael</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">劉庭妤 vivian</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">許文縣 Vincent Hsu</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">楊至靜 Joce Yang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">李孟翰 Martin</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">黃志雄 Jonathan Huang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">陳憶雯 Mag Chen</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">Min I 老師</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">張煦 shu.chang</td><td></td><td></td><td></td><td></td></tr><tr><td class="nm"></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <div class="final-row"><span>全隊合計</span><b class="score-box"></b><span>÷ 人數</span><b class="score-box"></b><span>＝ 平均</span><b class="score-box"></b></div></div>
+  <div class="result"><div><span>裁判簽名</span><b></b></div></div>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">躲避球加分賽記分表</div><h2>第 1 名 vs 第 3 名</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 3</b></div><div><span>時間</span><b>16:37–16:50</b></div></div></header>
+  <p class="sh-sub">每半場 5 分鐘。時間到時內場還剩幾人，該隊就加幾分。外場男生只能雙手丟球；內場接住球可救回一位隊友；每場只用 1 顆球。</p>
+  <table class="grid big"><thead><tr><th>隊伍</th><th>上場人數</th><th>上半場內場存活</th><th>下半場內場存活</th><th>加分合計</th></tr></thead>
+  <tbody><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td><td></td></tr><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <p class="foot">上半場：排名較前的隊伍在內場。下半場攻守交換。兩隊上場人數必須相同。</p>
+  <div class="result"><div><span>裁判簽名</span><b></b></div></div>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">躲避球加分賽記分表</div><h2>第 2 名 vs 第 4 名</h2></div><div class="sh-meta"><div><span>球場</span><b>球場 4</b></div><div><span>時間</span><b>16:37–16:50</b></div></div></header>
+  <p class="sh-sub">每半場 5 分鐘。時間到時內場還剩幾人，該隊就加幾分。外場男生只能雙手丟球；內場接住球可救回一位隊友；每場只用 1 顆球。</p>
+  <table class="grid big"><thead><tr><th>隊伍</th><th>上場人數</th><th>上半場內場存活</th><th>下半場內場存活</th><th>加分合計</th></tr></thead>
+  <tbody><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td><td></td></tr><tr><td><span class="blank-line"></span></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <p class="foot">上半場：排名較前的隊伍在內場。下半場攻守交換。兩隊上場人數必須相同。</p>
+  <div class="result"><div><span>裁判簽名</span><b></b></div></div>
+</section>
+<section class="sheet"><header class="sh-head"><div><div class="sh-kind">總積分表</div><h2>團隊總排名</h2></div><div class="sh-meta"><div><span>日期</span><b>11/23</b></div></div></header>
+  <p class="sh-sub">每項冠軍 +5、亞軍 +3；躲避球依內場存活人數加分。總分同分時，比拿到幾個冠軍。</p>
+  <table class="grid big"><thead><tr><th>隊伍</th><th>混雙</th><th>女雙</th><th>男雙</th><th>發球打靶</th><th>接教練發球</th><th>躲避球</th><th>總分</th></tr></thead><tbody><tr><td class="nm">德心應手隊</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">拉高比分隊</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">頭好壯壯隊</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="nm">飛達冠軍隊</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  <table class="grid big" style="margin-top:8mm"><thead><tr><th>名次</th><th>隊伍</th><th>總分</th></tr></thead><tbody><tr><td class="nm">第 1 名</td><td></td><td></td></tr><tr><td class="nm">第 2 名</td><td></td><td></td></tr><tr><td class="nm">第 3 名</td><td></td><td></td></tr><tr><td class="nm">第 4 名</td><td></td><td></td></tr></tbody></table>
+</section>
+</main></body></html>
