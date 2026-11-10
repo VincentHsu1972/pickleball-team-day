@@ -216,6 +216,7 @@ footer a{color:var(--court)}
 .bk b{display:block;font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.06em}
 .bk.final{border:2px solid var(--court);background:var(--court-soft);text-align:center}
 .arrow{color:var(--muted);font-size:20px}
+.fixture td{white-space:nowrap}
 .draws{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
 .draw{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;min-width:0}
 .draw h4{margin:0 0 6px;font-size:15px}
@@ -309,7 +310,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="phase-list">
     <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3>開場、分組、暖身</h3><p>14:00 前完成報到。各家族集合、喊隊呼，全體暖身與規則說明。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練帶練。最後 5 分鐘各隊排好 6 位先發與替補名單。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、抽籤</h3><p>三個項目各自抽出準決賽對戰組合。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、交出賽名單</h3><p>各隊隊長把三個項目的出賽名單交給記分員。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙，同時進行；球場 4 給下一場選手熱身與替補練習。每個項目打 3 場：兩場準決賽＋一場決賽。</p></div></div>
     <div class="phase-row"><div class="t" data-r="117,127"><small>10 分鐘</small></div><div><h3>中場休息</h3><p>補水、公布團體賽積分，布置歡樂遊戲。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。</p></div></div>
@@ -392,10 +393,17 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     </ul>
   </div>
 
-  <h3 style="margin-top:24px">抽籤</h3>
-  <p class="small">按下按鈕，三個項目各自抽出準決賽對戰。</p>
-  <div class="g-actions"><button class="btn" id="drawBtn" type="button">抽籤</button></div>
-  <div class="draws" id="draws"></div>
+  <h3 style="margin-top:24px">對戰表（已抽籤）</h3>
+  <p class="small">11/10 抽籤結果，當天照此進行。決賽由同一項目兩場準決賽的勝隊對戰。</p>
+  <div class="tablebox" style="margin-top:10px"><table class="fixture">
+    <thead><tr><th>場次</th><th>時間</th><th>球場 1｜混雙</th><th>球場 2｜女雙</th><th>球場 3｜男雙</th></tr></thead>
+    <tbody>
+      <tr><td>準決賽 1</td><td class="num" data-r="75,85" style="font-size:17px"></td><td>第四家族 vs 第三家族</td><td>第四家族 vs 第一家族</td><td>第一家族 vs 第二家族</td></tr>
+      <tr><td>準決賽 2</td><td class="num" data-r="88,98" style="font-size:17px"></td><td>第二家族 vs 第一家族</td><td>第二家族 vs 第三家族</td><td>第三家族 vs 第四家族</td></tr>
+      <tr><td>決賽</td><td class="num" data-r="101,111" style="font-size:17px"></td><td>兩場勝隊</td><td>兩場勝隊</td><td>兩場勝隊</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small" style="margin-top:8px">每個家族在準決賽都會打到三個項目，其中兩個項目在同一時段同時開打，請隊長排名單時避開同一人重複。</p>
 </section>
 
 <section id="fun">
@@ -542,15 +550,7 @@ function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()
 
 var teamNames=['第一家族','第二家族','第三家族','第四家族'];
 
-/* 抽籤 */
-var EVENTS=['混雙（球場 1）','女雙（球場 2）','男雙（球場 3）'];
-function drawAll(){
-  document.getElementById('draws').innerHTML=EVENTS.map(function(ev){
-    var t=shuffle(teamNames.slice());
-    return '<div class="draw"><h4>'+ev+'</h4><p>準決賽 1：'+esc(t[0])+' vs '+esc(t[1])+'</p><p>準決賽 2：'+esc(t[2])+' vs '+esc(t[3])+'</p></div>';
-  }).join('');
-}
-document.getElementById('drawBtn').onclick=drawAll;
+
 
 /* 計分板 */
 var ITEMS=['混雙','女雙','男雙','發球打靶','接教練發球'];
