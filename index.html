@@ -26,6 +26,7 @@
   --warm:#c9562c;
   --warm-soft:#fbeae2;
   --chip:#eef2f1;
+  --purple:#7b5cff;--pink:#e0457b;--gold:#e0a100;--sky:#1f9bd1;
   --f-display:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
   --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   --f-num:"Barlow Condensed","Arial Narrow",sans-serif;
@@ -33,11 +34,11 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0f1a1d;--surface:#162428;--ink:#e6eeec;--muted:#9db0b2;--line:#2a3d42;
   --court:#7fb8d6;--court-soft:#1a3340;--green:#7cc39f;--green-soft:#183429;
-  --ball:#dbe64a;--ball-ink:#14262b;--warm:#ef8a62;--warm-soft:#3a2219;--chip:#1e3035;color-scheme:dark}}
+  --ball:#dbe64a;--ball-ink:#14262b;--warm:#ef8a62;--warm-soft:#3a2219;--chip:#1e3035;--purple:#a593ff;--pink:#ff7aa8;--gold:#f2c14e;--sky:#5cc3f0;color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1a1d;--surface:#162428;--ink:#e6eeec;--muted:#9db0b2;--line:#2a3d42;
   --court:#7fb8d6;--court-soft:#1a3340;--green:#7cc39f;--green-soft:#183429;
-  --ball:#dbe64a;--ball-ink:#14262b;--warm:#ef8a62;--warm-soft:#3a2219;--chip:#1e3035;color-scheme:dark}
+  --ball:#dbe64a;--ball-ink:#14262b;--warm:#ef8a62;--warm-soft:#3a2219;--chip:#1e3035;--purple:#a593ff;--pink:#ff7aa8;--gold:#f2c14e;--sky:#5cc3f0;color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.75;
@@ -191,6 +192,23 @@ textarea{width:100%;min-height:200px;background:var(--surface);border:1px solid 
 .banner .facts dd{margin:0;font-family:var(--f-num);font-size:26px;font-weight:600;color:#fff;line-height:1.2}
 .banner .facts dd span{display:block;font-family:var(--f-body);font-size:14px;font-weight:500;color:#c9cbe8;margin-top:2px}
 @media (max-width:860px){.banner .hero{grid-template-columns:1fr;gap:24px}.banner .logo{width:80px}}
+
+.sicon,.nicon,.ricon,.bigicon{display:inline-grid;place-items:center;color:var(--ic)}
+.sicon svg,.nicon svg,.ricon svg,.bigicon svg{width:100%;height:100%}
+.sicon{width:48px;height:48px;padding:11px;border-radius:14px;background:color-mix(in srgb,var(--ic) 15%,var(--surface));grid-row:1 / span 3;align-self:start}
+.head{display:grid!important;grid-template-columns:48px minmax(0,1fr);column-gap:14px;row-gap:4px}
+.head>:not(.sicon){grid-column:2}
+.nicon{width:16px;height:16px;margin-right:4px;vertical-align:-3px}
+.ricon{width:28px;height:28px;padding:5px;border-radius:8px;margin-right:8px;vertical-align:-7px;background:color-mix(in srgb,var(--ic) 15%,var(--surface))}
+.bigicon{width:40px;height:40px;margin:0 auto 4px}
+.tbadge{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--tc);color:#fff;font-family:var(--f-num);font-weight:700;font-size:17px;margin-right:8px;vertical-align:2px;box-shadow:0 0 0 3px color-mix(in srgb,var(--tc) 25%,transparent)}
+.team{background-image:radial-gradient(circle at calc(100% - 22px) 22px,color-mix(in srgb,var(--tc) 14%,transparent) 0 26px,transparent 27px)}
+.team-stripe{display:grid;grid-template-columns:repeat(4,1fr);height:6px;margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));margin-top:-20px;margin-bottom:20px}
+.fairplay{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;margin-top:16px;padding:18px 20px;border-radius:12px;border:2px dashed var(--pink);background:color-mix(in srgb,var(--pink) 7%,var(--surface))}
+.fairplay .bigicon{margin:0}
+.fairplay p{margin:6px 0 0}
+.simple-score div{display:flex;flex-direction:column;align-items:center}
+@media (max-width:520px){.head{grid-template-columns:40px minmax(0,1fr)}.sicon{width:40px;height:40px;padding:9px}}
 footer{padding-block:28px 40px;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
 footer a{color:var(--court)}
 
@@ -238,6 +256,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-ball" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><g fill="currentColor" stroke="none"><circle cx="9" cy="8" r="1.3"/><circle cx="15" cy="8" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="7.5" cy="13.5" r="1.3"/><circle cx="16.5" cy="13.5" r="1.3"/><circle cx="12" cy="17" r="1.3"/></g></symbol><symbol id="i-paddle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="1.5" width="10" height="13" rx="5" transform="rotate(35 13.5 8)"/><path d="M9 14.5 4.5 20.5"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></symbol><symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M15.6 14.3A5 5 0 0 1 21 19"/></symbol><symbol id="i-court" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></symbol><symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="2" fill="currentColor"/></symbol><symbol id="i-dodge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 9.5c5 2 12 2 17 0M3.5 14.5c5-2 12-2 17 0"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m8 10 2 2 4-4M8 16h8"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol><symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h12l-2.5 4L17 12H5"/></symbol><symbol id="i-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 3 3 6l2 4 2-1v12h10V9l2 1 2-4-5.5-3a3.5 3.5 0 0 1-7 0z"/></symbol><symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol><symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M4 7h16M6 7l-3 6a3 3 0 0 0 6 0zM18 7l-3 6a3 3 0 0 0 6 0z"/></symbol><symbol id="i-bowl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0zM9 7c0-2 2-2 2-4M14 7c0-2 2-2 2-4"/></symbol><symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></symbol><symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-whistle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a5 5 0 1 0 10 0h8V7H8a5 5 0 0 0-5 4z"/><circle cx="8" cy="11" r="1.5"/></symbol><symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol><symbol id="i-swap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h14l-3-3M20 16H6l3 3"/></symbol></svg>
 <nav class="nav" aria-label="章節"><div class="wrap">
   <a href="#getting-there">交通</a><a href="#grouper">分組名單</a><a href="#rundown">流程</a><a href="#courts">球場配置</a><a href="#match">團體賽</a><a href="#fun">歡樂趣味</a><a href="#score">積分與獎勵</a><a href="#ops">準備清單</a>
 </div></nav>
@@ -262,19 +281,21 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     </div>
   </div>
 </header>
+<div class="team-stripe" aria-hidden="true"><i style="background:var(--warm)"></i><i style="background:var(--court)"></i><i style="background:var(--green)"></i><i style="background:var(--purple)"></i></div>
 <div class="wrap">
 
 <div class="notice">
-  <div><span class="nlabel">上午</span><p>自由選擇在家上班（WFH）或進公司，下午才有體力衝。</p></div>
-  <div><span class="nlabel">報到</span><p><b>14:00 前</b>一定要在南港運動中心完成報到！遲到的人，隊友會記得你。</p></div>
-  <div><span class="nlabel">服裝</span><p>穿 <b>DSC／DENTSU 黑 T</b>＋<b>好底氣襪子</b>，搭配<b>適宜、不暴露的運動褲與運動鞋</b>。要跑要跳，舒服最重要。</p></div>
-<div><span class="nlabel">飲水</span><p>為了環保，請<b>自備白開水</b>。場館內<b>不能飲食，只能喝水</b>，零食請忍到晚餐。</p></div>
+  <div><span class="nlabel"><span class="nicon" style="--ic:var(--gold)"><svg><use href="#i-sun"/></svg></span>上午</span><p>自由選擇在家上班（WFH）或進公司，下午才有體力衝。</p></div>
+  <div><span class="nlabel"><span class="nicon" style="--ic:var(--warm)"><svg><use href="#i-flag"/></svg></span>報到</span><p><b>14:00 前</b>一定要在南港運動中心完成報到！遲到的人，隊友會記得你。</p></div>
+  <div><span class="nlabel"><span class="nicon" style="--ic:var(--purple)"><svg><use href="#i-shirt"/></svg></span>服裝</span><p>穿 <b>DSC／DENTSU 黑 T</b>＋<b>好底氣襪子</b>，搭配<b>適宜、不暴露的運動褲與運動鞋</b>。要跑要跳，舒服最重要。</p></div>
+<div><span class="nlabel"><span class="nicon" style="--ic:var(--sky)"><svg><use href="#i-drop"/></svg></span>飲水</span><p>為了環保，請<b>自備白開水</b>。場館內<b>不能飲食，只能喝水</b>，零食請忍到晚餐。</p></div>
 </div>
 
-<div class="rule-zero"><span class="nlabel">最高原則</span><p>本頁規則沒寫到的，一律由<b>現場裁判</b>或<b>活動主辦人 Vincent</b> 判定。判決即最終判決，不管公平與否，<b>不得有異議</b>。抗議無效，撒嬌也沒用。</p></div>
+<div class="rule-zero"><span class="nlabel"><span class="nicon" style="--ic:var(--ink)"><svg><use href="#i-scale"/></svg></span>最高原則</span><p>本頁規則沒寫到的，一律由<b>現場裁判</b>或<b>活動主辦人 Vincent</b> 判定。判決即最終判決，不管公平與否，<b>不得有異議</b>。抗議無效，撒嬌也沒用。</p></div>
 
 <section id="getting-there">
   <div class="head">
+    <span class="sicon" style="--ic:var(--sky)"><svg><use href="#i-pin"/></svg></span>
     <div class="eyebrow">GETTING THERE</div>
     <h2>南港運動中心交通方式</h2>
     <p class="muted">臺北市南港區玉成街 69 號　<a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E6%B8%AF%E9%81%8B%E5%8B%95%E4%B8%AD%E5%BF%83" target="_blank" rel="noopener" style="color:var(--court)">在 Google 地圖開啟</a></p>
@@ -308,40 +329,43 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 
 <section id="grouper">
   <div class="head">
+    <span class="sicon" style="--ic:var(--purple)"><svg><use href="#i-users"/></svg></span>
     <div class="eyebrow">TEAMS</div>
     <h2>分組名單</h2>
     <p class="muted">四隊共 36 人，隊名開頭取自隊長英文名的第一個音。各隊隊長負責排出賽名單，記分員負責回報成績，順便記住隊友的每一個好球。</p>
   </div>
   <div class="teams">
-    <div class="team" style="--tc:var(--warm)"><h3>德心應手隊</h3><div class="sub">隊長 Dexter 李令德・9 人</div><ul class="members"><li><span>李令德 <small>Dexter Lee</small></span><span class="role">隊長</span></li><li><span>羅愫 <small>Su</small></span></li><li><span>鄺璟珩 <small>Karen Kwong</small></span></li><li><span>李長穎 <small>David Lee</small></span></li><li><span>蔡政霖 <small>Lewis Tsai</small></span></li><li><span>蔡孟軒 <small>Stan Tsai</small></span></li><li><span>劉昱妏 <small>Teresa Liu</small></span></li><li><span>楊翔舜</span></li><li><span>蔡承翰 <small>Tony Tsai</small></span><span class="role">記分員</span></li></ul></div>
-    <div class="team" style="--tc:var(--court)"><h3>拉高比分隊</h3><div class="sub">隊長 Raphael 陳靖偉・9 人</div><ul class="members"><li><span>陳靖偉 <small>Raphael</small></span><span class="role">隊長</span></li><li><span>劉庭妤 <small>vivian</small></span></li><li><span>許文縣 <small>Vincent Hsu</small></span></li><li><span>楊至靜 <small>Joce Yang</small></span></li><li><span>李孟翰 <small>Martin</small></span></li><li><span>黃志雄 <small>Jonathan Huang</small></span></li><li><span>陳憶雯 <small>Mag Chen</small></span></li><li><span>Min I 老師</span></li><li><span>張煦 <small>shu.chang</small></span><span class="role">記分員</span></li></ul></div>
-    <div class="team" style="--tc:var(--green)"><h3>頭好壯壯隊</h3><div class="sub">隊長 Toby 彭譯蔚・9 人</div><ul class="members"><li><span>彭譯蔚 <small>Toby Peng</small></span><span class="role">隊長</span></li><li><span>洪立恩 <small>Andy</small></span></li><li><span>胡庭瑋 <small>Howard Hu</small></span></li><li><span>張雅筑 <small>Audrey</small></span></li><li><span>張詠琦 <small>Sibyl Chang</small></span></li><li><span>陳昭樺 <small>Cathy</small></span></li><li><span>陳介立 <small>Bass Chen</small></span></li><li><span>Judy</span></li><li><span>曾煜祐 <small>Eric Zeng</small></span><span class="role">記分員</span></li></ul></div>
-    <div class="team" style="--tc:#8a6bbf"><h3>飛常厲害隊</h3><div class="sub">隊長 Freda 邵懿文・9 人</div><ul class="members"><li><span>邵懿文 <small>Freda Shao</small></span><span class="role">隊長</span></li><li><span>吳承軒 <small>Nick Wu</small></span></li><li><span>高靖萍 <small>Chingping Kao</small></span></li><li><span>孫郁喬 <small>Chiao Sun</small></span></li><li><span>陳柏凱 <small>Bart Chen</small></span></li><li><span>洪政道 <small>Jack</small></span></li><li><span>Min</span></li><li><span>Jeremy</span></li><li><span>鄒凱宇 <small>Kevin Tsou</small></span><span class="role">記分員</span></li></ul></div>
+    <div class="team" style="--tc:var(--warm)"><h3><span class="tbadge">D</span>德心應手隊</h3><div class="sub">隊長 Dexter 李令德・9 人</div><ul class="members"><li><span>李令德 <small>Dexter Lee</small></span><span class="role">隊長</span></li><li><span>羅愫 <small>Su</small></span></li><li><span>鄺璟珩 <small>Karen Kwong</small></span></li><li><span>李長穎 <small>David Lee</small></span></li><li><span>蔡政霖 <small>Lewis Tsai</small></span></li><li><span>蔡孟軒 <small>Stan Tsai</small></span></li><li><span>劉昱妏 <small>Teresa Liu</small></span></li><li><span>楊翔舜</span></li><li><span>蔡承翰 <small>Tony Tsai</small></span><span class="role">記分員</span></li></ul></div>
+    <div class="team" style="--tc:var(--court)"><h3><span class="tbadge">R</span>拉高比分隊</h3><div class="sub">隊長 Raphael 陳靖偉・9 人</div><ul class="members"><li><span>陳靖偉 <small>Raphael</small></span><span class="role">隊長</span></li><li><span>劉庭妤 <small>vivian</small></span></li><li><span>許文縣 <small>Vincent Hsu</small></span></li><li><span>楊至靜 <small>Joce Yang</small></span></li><li><span>李孟翰 <small>Martin</small></span></li><li><span>黃志雄 <small>Jonathan Huang</small></span></li><li><span>陳憶雯 <small>Mag Chen</small></span></li><li><span>Min I 老師</span></li><li><span>張煦 <small>shu.chang</small></span><span class="role">記分員</span></li></ul></div>
+    <div class="team" style="--tc:var(--green)"><h3><span class="tbadge">T</span>頭好壯壯隊</h3><div class="sub">隊長 Toby 彭譯蔚・9 人</div><ul class="members"><li><span>彭譯蔚 <small>Toby Peng</small></span><span class="role">隊長</span></li><li><span>洪立恩 <small>Andy</small></span></li><li><span>胡庭瑋 <small>Howard Hu</small></span></li><li><span>張雅筑 <small>Audrey</small></span></li><li><span>張詠琦 <small>Sibyl Chang</small></span></li><li><span>陳昭樺 <small>Cathy</small></span></li><li><span>陳介立 <small>Bass Chen</small></span></li><li><span>Judy</span></li><li><span>曾煜祐 <small>Eric Zeng</small></span><span class="role">記分員</span></li></ul></div>
+    <div class="team" style="--tc:var(--purple)"><h3><span class="tbadge">F</span>飛常厲害隊</h3><div class="sub">隊長 Freda 邵懿文・9 人</div><ul class="members"><li><span>邵懿文 <small>Freda Shao</small></span><span class="role">隊長</span></li><li><span>吳承軒 <small>Nick Wu</small></span></li><li><span>高靖萍 <small>Chingping Kao</small></span></li><li><span>孫郁喬 <small>Chiao Sun</small></span></li><li><span>陳柏凱 <small>Bart Chen</small></span></li><li><span>洪政道 <small>Jack</small></span></li><li><span>Min</span></li><li><span>Jeremy</span></li><li><span>鄒凱宇 <small>Kevin Tsou</small></span><span class="role">記分員</span></li></ul></div>
   </div>
 </section>
 
 <section id="rundown">
   <div class="head">
+    <span class="sicon" style="--ic:var(--warm)"><svg><use href="#i-clock"/></svg></span>
     <div class="eyebrow">RUNDOWN</div>
     <h2>活動流程</h2>
     <p class="muted">改變開始時間，全頁的時間會一起更新。</p>
   </div>
   <div class="controls"><label for="start">開始時間</label><input id="start" type="time" value="14:00"><span id="range" class="num" style="font-size:17px">14:00–17:00</span></div>
   <div class="phase-list">
-    <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3>開場、分組、暖身</h3><p>14:00 前完成報到。各隊集合、喊隊呼（越大聲越好），全體暖身，順便把規則聽清楚。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練從怎麼握拍開始帶。不會沒關係，這 50 分鐘就是用來變會的。最後 5 分鐘各隊排好 6 位先發與替補名單。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、交出賽名單</h3><p>隊長把三個項目的出賽名單交給記分員。喝口水，接下來要認真了。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙，同時進行；球場 4 給下一場選手熱身與替補練習。每個項目打 3 場：兩場準決賽＋一場決賽。場邊的人請負責大聲加油。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="117,127"><small>10 分鐘</small></div><div><h3>中場休息</h3><p>補水、公布團體賽積分。落後的隊伍可以開始密謀怎麼逆轉。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。這段不太看球技，看的是手感和運氣。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="157,170"><small>13 分鐘</small></div><div><h3>最後加分賽｜躲避球</h3><p>依目前積分：第 1 名 vs 第 3 名、第 2 名 vs 第 4 名，兩場同時開打。內場存活幾人就加幾分。前面落後的隊伍，翻盤就靠這一戰。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="170,180"></div><div><h3>頒獎、合照</h3><p>公布總積分與排名，頒發獎勵，拍一張每個人都在笑的大合照。</p></div></div>
-    <div class="phase-row"><div class="t">17:30–20:00</div><div><h3>好好吃頓飯</h3><p>運動完一起吃晚餐。下午燒掉的熱量，晚上光明正大補回來。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3><span class="ricon" style="--ic:var(--warm)"><svg><use href="#i-flag"/></svg></span>開場、分組、暖身</h3><p>14:00 前完成報到。各隊集合、喊隊呼（越大聲越好），全體暖身，順便把規則聽清楚。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--court)"><svg><use href="#i-paddle"/></svg></span>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練從怎麼握拍開始帶。不會沒關係，這 50 分鐘就是用來變會的。最後 5 分鐘各隊排好 6 位先發與替補名單。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3><span class="ricon" style="--ic:var(--sky)"><svg><use href="#i-drop"/></svg></span>補水、交出賽名單</h3><p>隊長把三個項目的出賽名單交給記分員。喝口水，接下來要認真了。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--green)"><svg><use href="#i-ball"/></svg></span>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙，同時進行；球場 4 給下一場選手熱身與替補練習。每個項目打 3 場：兩場準決賽＋一場決賽。場邊的人請負責大聲加油。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="117,127"><small>10 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--sky)"><svg><use href="#i-drop"/></svg></span>中場休息</h3><p>補水、公布團體賽積分。落後的隊伍可以開始密謀怎麼逆轉。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--pink)"><svg><use href="#i-target"/></svg></span>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。這段不太看球技，看的是手感和運氣。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="157,170"><small>13 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--warm)"><svg><use href="#i-dodge"/></svg></span>最後加分賽｜躲避球</h3><p>依目前積分：第 1 名 vs 第 3 名、第 2 名 vs 第 4 名，兩場同時開打。內場存活幾人就加幾分。前面落後的隊伍，翻盤就靠這一戰。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="170,180"></div><div><h3><span class="ricon" style="--ic:var(--gold)"><svg><use href="#i-camera"/></svg></span>頒獎、合照</h3><p>公布總積分與排名，頒發獎勵，拍一張每個人都在笑的大合照。</p></div></div>
+    <div class="phase-row"><div class="t">17:30–20:00</div><div><h3><span class="ricon" style="--ic:var(--purple)"><svg><use href="#i-bowl"/></svg></span>好好吃頓飯</h3><p>運動完一起吃晚餐。下午燒掉的熱量，晚上光明正大補回來。</p></div></div>
   </div>
 </section>
 
 <section id="courts">
   <div class="head">
+    <span class="sicon" style="--ic:var(--green)"><svg><use href="#i-court"/></svg></span>
     <div class="eyebrow">COURT PLAN</div>
     <h2>球場配置</h2>
   </div>
@@ -376,6 +400,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 
 <section id="match">
   <div class="head">
+    <span class="sicon" style="--ic:var(--court)"><svg><use href="#i-paddle"/></svg></span>
     <div class="eyebrow">TEAM MATCH</div>
     <h2>團體賽：三個項目同時開打</h2>
     <p class="muted">每隊 6 位先發：混雙 1 男 1 女、女雙 2 女、男雙 2 男。其他隊員當替補，準決賽一定要上場，沒有人可以只當觀眾。</p>
@@ -404,7 +429,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   </table></div>
 
   <div class="card" style="margin-top:16px">
-    <h3>比賽規則</h3>
+    <h3><span class="ricon" style="--ic:var(--court)"><svg><use href="#i-whistle"/></svg></span>比賽規則</h3>
     <ul class="rules">
       <li>每一球都算分，先到 11 分或 10 分鐘時間到分數高的贏。</li>
       <li>平手時再打一球，一球定勝負。</li>
@@ -428,6 +453,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 
 <section id="fun">
   <div class="head">
+    <span class="sicon" style="--ic:var(--pink)"><svg><use href="#i-target"/></svg></span>
     <div class="eyebrow">FUN ZONE</div>
     <h2>歡樂趣味：兩個球場、兩個遊戲</h2>
     <p class="muted">兩隊一組各玩一個遊戲，13 分鐘後交換。不太會打球的人，這裡才是你的主場。兩個遊戲也照冠軍 5 分、亞軍 3 分計入積分。</p>
@@ -442,17 +468,20 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   </table></div>
   <div class="grid2" style="margin-top:16px">
     <div class="card">
-      <h3>遊戲一：發球打靶</h3>
+      <h3><span class="ricon" style="--ic:var(--pink)"><svg><use href="#i-target"/></svg></span>遊戲一：發球打靶</h3>
       <p>地上貼 1、3、5 分的目標區，每人發 3 球。全隊總分除以人數，平均最高的是冠軍。打進 5 分區請盡情歡呼。</p>
     </div>
     <div class="card">
-      <h3>遊戲二：接教練發球</h3>
+      <h3><span class="ricon" style="--ic:var(--sky)"><svg><use href="#i-paddle"/></svg></span>遊戲二：接教練發球</h3>
       <p>教練在對面發球，隊員輪流接發球，把球打回對面場內就算成功。每人接 3 球，全隊成功球數除以人數，平均最高的是冠軍。教練的球不會太刁鑽（應該）。</p>
     </div>
   </div>
+  <div class="fairplay"><span class="bigicon" style="--ic:var(--pink)"><svg><use href="#i-eye"/></svg></span><div><h3>計分方式：互相監督制</h3>
+    <p>同一輪的兩隊記分員一起站在場邊，<b>同時幫兩隊記分、互相核對</b>，最後兩人一起在記分表上簽名。</p>
+    <p class="small">溫馨提醒兩位記分員：互相監督是為了公平，不是為了聯手。主辦單位一直覺得你們是 DSC 少數看起來公平公正、不狡詐的人，請不要親手毀掉這份好感度。</p></div></div>
   <div class="card" style="margin-top:16px;border-color:var(--warm)">
     <div class="eyebrow" style="color:var(--warm)">最後加分賽</div>
-    <h3>躲避球：內場存活幾人，就加幾分</h3>
+    <h3><span class="ricon" style="--ic:var(--warm)"><svg><use href="#i-dodge"/></svg></span>躲避球：內場存活幾人，就加幾分</h3>
     <p>歡樂趣味結束後，依當下總積分排名對戰，兩場在球場 3、4 同時開打。這是最後的加分機會，能躲就躲，能接就接。</p>
     <div class="tablebox" style="margin-top:12px"><table>
       <thead><tr><th>時段</th><th>時間</th><th>球場 3：第 1 名 vs 第 3 名</th><th>球場 4：第 2 名 vs 第 4 名</th></tr></thead>
@@ -475,13 +504,14 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 
 <section id="score">
   <div class="head">
+    <span class="sicon" style="--ic:var(--gold)"><svg><use href="#i-trophy"/></svg></span>
     <div class="eyebrow">POINTS & REWARDS</div>
     <h2>積分與獎勵</h2>
     <p class="muted">三個比賽項目加兩個遊戲，每項冠軍 5 分、亞軍 3 分。最後再加上躲避球加分賽的內場存活人數，總分最高的就是團隊總冠軍。</p>
   </div>
   <div class="simple-score">
-    <div><b>5</b><span>冠軍</span></div>
-    <div><b>3</b><span>亞軍</span></div>
+    <div><span class="bigicon" style="--ic:var(--gold)"><svg><use href="#i-trophy"/></svg></span><b>5</b><span>冠軍</span></div>
+    <div><span class="bigicon" style="--ic:var(--court)"><svg><use href="#i-star"/></svg></span><b>3</b><span>亞軍</span></div>
   </div>
 
   <div class="note" style="margin:0 0 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between"><span><b>紙本記分表</b>：每場比賽一張 A4，共 16 張（團體賽 9、歡樂趣味 4、躲避球 2、總積分 1），隊名與隊員已預先印好。</span><a class="btn" href="https://vincenthsu1972.github.io/pickleball-team-day/scoresheets.html" target="_blank" rel="noopener" style="text-decoration:none">開啟記分表</a></div>
@@ -514,6 +544,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 
 <section id="ops">
   <div class="head">
+    <span class="sicon" style="--ic:var(--green)"><svg><use href="#i-check"/></svg></span>
     <div class="eyebrow">CHECKLIST</div>
     <h2>準備清單</h2>
   </div>
