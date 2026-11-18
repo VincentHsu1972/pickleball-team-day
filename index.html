@@ -164,7 +164,10 @@ textarea{width:100%;min-height:200px;background:var(--surface);border:1px solid 
 .checklist li{padding-left:26px;position:relative;font-size:14px}
 .checklist li:before{content:"";position:absolute;left:0;top:5px;width:15px;height:15px;border:2px solid var(--green);border-radius:4px}
 .tagline{margin-top:10px;font-size:clamp(20px,2.6vw,26px);font-weight:900;color:var(--court)}
-.notice{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px}
+.rule-zero{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:baseline;border:2px solid var(--ink);border-radius:10px;padding:12px 16px;font-size:15px;margin-bottom:8px}
+.rule-zero p{margin:0;min-width:0}
+.rule-zero .nlabel{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--ink)}
+.notice{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:8px}
 .notice>div{background:var(--warm-soft);border-radius:10px;padding:12px 16px;font-size:15px;display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:baseline}
 .notice p{margin:0;min-width:0}
 .notice p b{margin-right:4px}
@@ -262,10 +265,13 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 <div class="wrap">
 
 <div class="notice">
-  <div><span class="nlabel">上午</span><p>可自行決定在家上班（WFH）或進公司</p></div>
-  <div><span class="nlabel">報到</span><p><b>14:00 前</b>一定要在南港運動中心完成報到！</p></div>
-  <div><span class="nlabel">服裝</span><p>穿 <b>DSC／DENTSU 黑 T</b>＋<b>好底氣襪子</b></p></div>
+  <div><span class="nlabel">上午</span><p>自由選擇在家上班（WFH）或進公司，下午才有體力衝。</p></div>
+  <div><span class="nlabel">報到</span><p><b>14:00 前</b>一定要在南港運動中心完成報到！遲到的人，隊友會記得你。</p></div>
+  <div><span class="nlabel">服裝</span><p>穿 <b>DSC／DENTSU 黑 T</b>＋<b>好底氣襪子</b>，搭配<b>適宜、不暴露的運動褲與運動鞋</b>。要跑要跳，舒服最重要。</p></div>
+<div><span class="nlabel">飲水</span><p>為了環保，請<b>自備白開水</b>。場館內<b>不能飲食，只能喝水</b>，零食請忍到晚餐。</p></div>
 </div>
+
+<div class="rule-zero"><span class="nlabel">最高原則</span><p>本頁規則沒寫到的，一律由<b>現場裁判</b>或<b>活動主辦人 Vincent</b> 判定。判決即最終判決，不管公平與否，<b>不得有異議</b>。抗議無效，撒嬌也沒用。</p></div>
 
 <section id="getting-there">
   <div class="head">
@@ -308,15 +314,15 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   </div>
   <div class="controls"><label for="start">開始時間</label><input id="start" type="time" value="14:00"><span id="range" class="num" style="font-size:17px">14:00–17:00</span></div>
   <div class="phase-list">
-    <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3>開場、分組、暖身</h3><p>14:00 前完成報到。各隊集合、喊隊呼，全體暖身與規則說明。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練帶練。最後 5 分鐘各隊排好 6 位先發與替補名單。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、交出賽名單</h3><p>各隊隊長把三個項目的出賽名單交給記分員。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙，同時進行；球場 4 給下一場選手熱身與替補練習。每個項目打 3 場：兩場準決賽＋一場決賽。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="117,127"><small>10 分鐘</small></div><div><h3>中場休息</h3><p>補水、公布團體賽積分，布置歡樂遊戲。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="157,170"><small>13 分鐘</small></div><div><h3>最後加分賽｜躲避球</h3><p>依目前積分：第 1 名 vs 第 3 名、第 2 名 vs 第 4 名，兩場同時開打。內場存活幾人就加幾分。</p></div></div>
-    <div class="phase-row"><div class="t" data-r="170,180"></div><div><h3>頒獎、合照</h3><p>公布總積分與排名，頒發獎勵。</p></div></div>
-    <div class="phase-row"><div class="t">17:30–20:00</div><div><h3>好好吃頓飯</h3><p>運動完一起吃晚餐。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="0,20"></div><div><h3>開場、分組、暖身</h3><p>14:00 前完成報到。各隊集合、喊隊呼（越大聲越好），全體暖身，順便把規則聽清楚。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="20,70"><small>50 分鐘</small></div><div><h3>第一段｜學習＋練習</h3><p>四隊各占一面球場，教練從怎麼握拍開始帶。不會沒關係，這 50 分鐘就是用來變會的。最後 5 分鐘各隊排好 6 位先發與替補名單。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3>補水、交出賽名單</h3><p>隊長把三個項目的出賽名單交給記分員。喝口水，接下來要認真了。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙，同時進行；球場 4 給下一場選手熱身與替補練習。每個項目打 3 場：兩場準決賽＋一場決賽。場邊的人請負責大聲加油。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="117,127"><small>10 分鐘</small></div><div><h3>中場休息</h3><p>補水、公布團體賽積分。落後的隊伍可以開始密謀怎麼逆轉。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。這段不太看球技，看的是手感和運氣。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="157,170"><small>13 分鐘</small></div><div><h3>最後加分賽｜躲避球</h3><p>依目前積分：第 1 名 vs 第 3 名、第 2 名 vs 第 4 名，兩場同時開打。內場存活幾人就加幾分。前面落後的隊伍，翻盤就靠這一戰。</p></div></div>
+    <div class="phase-row"><div class="t" data-r="170,180"></div><div><h3>頒獎、合照</h3><p>公布總積分與排名，頒發獎勵，拍一張每個人都在笑的大合照。</p></div></div>
+    <div class="phase-row"><div class="t">17:30–20:00</div><div><h3>好好吃頓飯</h3><p>運動完一起吃晚餐。下午燒掉的熱量，晚上光明正大補回來。</p></div></div>
   </div>
 </section>
 
@@ -358,14 +364,14 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="head">
     <div class="eyebrow">TEAM MATCH</div>
     <h2>團體賽：三個項目同時開打</h2>
-    <p class="muted">每隊 6 位先發：混雙 1 男 1 女、女雙 2 女、男雙 2 男。其他隊員當替補，準決賽一定要上場。</p>
+    <p class="muted">每隊 6 位先發：混雙 1 男 1 女、女雙 2 女、男雙 2 男。其他隊員當替補，準決賽一定要上場，沒有人可以只當觀眾。</p>
   </div>
 
   <h3>每個項目都打 3 場</h3>
   <div class="bracket">
     <div class="bk-col">
-      <div class="bk"><b>準決賽 1</b>抽籤 vs 抽籤</div>
-      <div class="bk"><b>準決賽 2</b>抽籤 vs 抽籤</div>
+      <div class="bk"><b>準決賽 1</b>對戰見下方對戰表</div>
+      <div class="bk"><b>準決賽 2</b>對戰見下方對戰表</div>
     </div>
     <div class="arrow">→</div>
     <div class="bk final"><b>決賽</b>兩場勝隊爭冠<br><span class="small">冠軍 +5 分・亞軍 +3 分</span></div>
@@ -387,14 +393,14 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <h3>比賽規則</h3>
     <ul class="rules">
       <li>每一球都算分，先到 11 分或 10 分鐘時間到分數高的贏。</li>
-      <li>平手時再打一球決勝。</li>
+      <li>平手時再打一球，一球定勝負。</li>
       <li><b>換人：</b>每一場（準決賽、決賽）每個項目可以換人一次，在死球時向裁判示意即可，換下的人該場不能再上。</li><li><b>人人上場：</b>準決賽時每位隊員都一定要上場，先發或換人上場都算。替補男生可以在男雙或混雙換上場。</li>
-      <li>女生不足的隊伍，女雙可以由男生代打。</li>
+      <li>女生不足的隊伍，女雙可以由男生代打（男生請拿出紳士風度）。</li>
     </ul>
   </div>
 
   <h3 style="margin-top:24px">對戰表（已抽籤）</h3>
-  <p class="small">11/10 抽籤結果，當天照此進行。決賽由同一項目兩場準決賽的勝隊對戰。</p>
+  <p class="small">11/10 抽籤結果，當天照此進行，恕不接受重抽。決賽由同一項目兩場準決賽的勝隊對戰。</p>
   <div class="tablebox" style="margin-top:10px"><table class="fixture">
     <thead><tr><th>場次</th><th>時間</th><th>球場 1｜混雙</th><th>球場 2｜女雙</th><th>球場 3｜男雙</th></tr></thead>
     <tbody>
@@ -410,7 +416,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="head">
     <div class="eyebrow">FUN ZONE</div>
     <h2>歡樂趣味：兩個球場、兩個遊戲</h2>
-    <p class="muted">兩隊一組各玩一個遊戲，13 分鐘後交換。兩個遊戲也照冠軍 5 分、亞軍 3 分計入積分。</p>
+    <p class="muted">兩隊一組各玩一個遊戲，13 分鐘後交換。不太會打球的人，這裡才是你的主場。兩個遊戲也照冠軍 5 分、亞軍 3 分計入積分。</p>
   </div>
   <div class="tablebox"><table>
     <thead><tr><th>時段</th><th>時間</th><th>球場 1：發球打靶</th><th>球場 2：接教練發球</th></tr></thead>
@@ -423,17 +429,17 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="grid2" style="margin-top:16px">
     <div class="card">
       <h3>遊戲一：發球打靶</h3>
-      <p>地上貼 1、3、5 分的目標區，每人發 3 球。全隊總分除以人數，平均最高的是冠軍。</p>
+      <p>地上貼 1、3、5 分的目標區，每人發 3 球。全隊總分除以人數，平均最高的是冠軍。打進 5 分區請盡情歡呼。</p>
     </div>
     <div class="card">
       <h3>遊戲二：接教練發球</h3>
-      <p>教練在對面發球，隊員輪流接發球，把球打回對面場內就算成功。每人接 3 球，全隊成功球數除以人數，平均最高的是冠軍。</p>
+      <p>教練在對面發球，隊員輪流接發球，把球打回對面場內就算成功。每人接 3 球，全隊成功球數除以人數，平均最高的是冠軍。教練的球不會太刁鑽（應該）。</p>
     </div>
   </div>
   <div class="card" style="margin-top:16px;border-color:var(--warm)">
     <div class="eyebrow" style="color:var(--warm)">最後加分賽</div>
     <h3>躲避球：內場存活幾人，就加幾分</h3>
-    <p>歡樂趣味結束後，依當下總積分排名對戰，兩場在球場 3、4 同時開打。</p>
+    <p>歡樂趣味結束後，依當下總積分排名對戰，兩場在球場 3、4 同時開打。這是最後的加分機會，能躲就躲，能接就接。</p>
     <div class="tablebox" style="margin-top:12px"><table>
       <thead><tr><th>時段</th><th>時間</th><th>球場 3：第 1 名 vs 第 3 名</th><th>球場 4：第 2 名 vs 第 4 名</th></tr></thead>
       <tbody>
@@ -494,7 +500,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
   <div class="head">
     <div class="eyebrow">TEAMS</div>
     <h2>分組名單</h2>
-    <p class="muted">四隊共 36 人，隊名開頭取自隊長英文名的第一個音。各隊隊長負責排出賽名單，記分員負責回報該隊的比賽成績。</p>
+    <p class="muted">四隊共 36 人，隊名開頭取自隊長英文名的第一個音。各隊隊長負責排出賽名單，記分員負責回報成績，順便記住隊友的每一個好球。</p>
   </div>
   <div class="teams">
     <div class="team" style="--tc:var(--warm)"><h3>德心應手隊</h3><div class="sub">隊長 Dexter 李令德・9 人</div><ul class="members"><li><span>李令德 <small>Dexter Lee</small></span><span class="role">隊長</span></li><li><span>羅愫 <small>Su</small></span></li><li><span>鄺璟珩 <small>Karen Kwong</small></span></li><li><span>李長穎 <small>David Lee</small></span></li><li><span>蔡政霖 <small>Lewis Tsai</small></span></li><li><span>蔡孟軒 <small>Stan Tsai</small></span></li><li><span>劉昱妏 <small>Teresa Liu</small></span></li><li><span>楊翔舜</span></li><li><span>蔡承翰 <small>Tony Tsai</small></span><span class="role">記分員</span></li></ul></div>
@@ -516,7 +522,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
         <li>主持 1 位；裁判 4 位（每面球場一位，可由教練擔任）；計分 1 位。</li>
         <li>球拍每人一支、皮克球 40 顆、四色背心。</li>
         <li>打靶地貼、計時器 4 個、哨子。遊戲二需要 1 位教練發球。</li>
-        <li>泡棉躲避球 3 顆（兩場各 1 顆，另 1 顆備用）、飲水、急救包。</li>
+        <li>泡棉躲避球 3 顆（兩場各 1 顆，另 1 顆備用）、急救包。飲水請參加者自備。</li>
       </ul>
     </div>
     <div class="card">
@@ -531,7 +537,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
 </section>
 
 </div>
-<footer><div class="wrap">電通智能中心 dentsu Solution Center Team Building · 2026.11.23 南港運動中心 · 限時賽與積分為本次活動自訂規則。</div></footer>
+<footer><div class="wrap">電通智能中心 dentsu Solution Center Team Building · 2026.11.23 南港運動中心 · 限時賽與積分為本次活動自訂規則，未盡事項由現場裁判或主辦人 Vincent 判定。</div></footer>
 
 <script>
 (function(){
