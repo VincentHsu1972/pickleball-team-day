@@ -78,8 +78,8 @@ section{padding-block:40px;border-top:1px solid var(--line)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;min-width:0}
 .card h3{margin-bottom:8px}
 .card p+p{margin-top:8px}
-ul.rules{margin:8px 0 0;padding-left:1.2em}
-ul.rules li{margin:4px 0}
+ul.rules,ol.rules{margin:8px 0 0;padding-left:1.2em}
+ul.rules li,ol.rules li{margin:4px 0}
 .note{background:var(--court-soft);border-radius:10px;padding:14px 18px;font-size:14px;margin-top:16px}
 .note.warm{background:var(--warm-soft)}
 .note b{color:var(--ink)}
@@ -356,7 +356,7 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <div class="phase-row"><div class="t" data-r="70,75"></div><div><h3><span class="ricon" style="--ic:var(--sky)"><svg><use href="#i-drop"/></svg></span>補水、交出賽名單</h3><p>隊長把三個項目的出賽名單交給記分員。喝口水，接下來要認真了。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="75,117"><small>42 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--green)"><svg><use href="#i-ball"/></svg></span>第二段｜團體賽</h3><p>球場 1 混雙、球場 2 女雙、球場 3 男雙，同時進行；球場 4 給下一場選手熱身與替補練習。每個項目打 3 場：兩場準決賽＋一場決賽。場邊的人請負責大聲加油。</p></div></div>
     <div class="phase-row"><div class="t" data-r="117,127"><small>10 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--sky)"><svg><use href="#i-drop"/></svg></span>中場休息</h3><p>補水、公布團體賽積分。落後的隊伍可以開始密謀怎麼逆轉。</p></div></div>
-    <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--pink)"><svg><use href="#i-target"/></svg></span>第三段｜歡樂趣味</h3><p>球場 1、2 各一個遊戲，兩隊一組，13 分鐘後交換。這段不太看球技，看的是手感和運氣。</p></div></div>
+    <div class="phase-row hl"><div class="t" data-r="127,157"><small>30 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--pink)"><svg><use href="#i-target"/></svg></span>第三段｜歡樂趣味</h3><p>球場 1「龍舟」、球場 2「王族」，兩隊一組，13 分鐘後交換。這段比的是默契和救援，不是誰最會打。</p></div></div>
     <div class="phase-row hl"><div class="t" data-r="157,170"><small>13 分鐘</small></div><div><h3><span class="ricon" style="--ic:var(--warm)"><svg><use href="#i-dodge"/></svg></span>最後加分賽｜躲避球</h3><p>依目前積分：第 1 名 vs 第 3 名、第 2 名 vs 第 4 名，兩場同時開打。內場存活幾人就加幾分。前面落後的隊伍，翻盤就靠這一戰。</p></div></div>
     <div class="phase-row"><div class="t" data-r="170,180"></div><div><h3><span class="ricon" style="--ic:var(--gold)"><svg><use href="#i-camera"/></svg></span>頒獎、合照</h3><p>公布總積分與排名，頒發獎勵，拍一張每個人都在笑的大合照。</p></div></div>
     <div class="phase-row"><div class="t">17:00–18:00</div><div><h3><span class="ricon" style="--ic:var(--sky)"><svg><use href="#i-pin"/></svg></span>移動到餐廳</h3><p>搭同事便車、四人共乘計程車，或騎 YouBike／走路／跑步過去，詳見下方「晚餐」。</p></div></div>
@@ -386,8 +386,8 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <div class="ct side"><b>熱身練習區</b>下一場選手、替補</div>
 
     <div class="cm-phase"><span class="num" data-r="127,157"></span>歡樂趣味</div>
-    <div class="ct fun"><b>遊戲一</b>發球打靶</div>
-    <div class="ct fun"><b>遊戲二</b>接教練發球</div>
+    <div class="ct fun"><b>遊戲一</b>龍舟</div>
+    <div class="ct fun"><b>遊戲二</b>王族</div>
     <div class="ct buffer"><b>休息區</b>拆網，準備躲避球</div>
     <div class="ct buffer"><b>休息區</b>拆網，準備躲避球</div>
 
@@ -460,21 +460,39 @@ select.pick{background:var(--surface);border:1px solid var(--line);border-radius
     <p class="muted">兩隊一組各玩一個遊戲，13 分鐘後交換。不太會打球的人，這裡才是你的主場。兩個遊戲也照冠軍 5 分、亞軍 3 分計入積分。</p>
   </div>
   <div class="tablebox"><table>
-    <thead><tr><th>時段</th><th>時間</th><th>球場 1：發球打靶</th><th>球場 2：接教練發球</th></tr></thead>
+    <thead><tr><th>時段</th><th>時間</th><th>球場 1：龍舟</th><th>球場 2：王族</th></tr></thead>
     <tbody>
       <tr><td>說明</td><td class="num" data-r="127,129" style="font-size:17px"></td><td colspan="2">主持人說明兩個遊戲</td></tr>
-      <tr><td>第 1 輪</td><td class="num" data-r="129,142" style="font-size:17px"></td><td>德心應手隊、拉高比分隊</td><td>頭好壯壯隊、飛常厲害隊</td></tr>
-      <tr><td>第 2 輪</td><td class="num" data-r="144,157" style="font-size:17px"></td><td>頭好壯壯隊、飛常厲害隊</td><td>德心應手隊、拉高比分隊</td></tr>
+      <tr><td>第 1 輪</td><td class="num" data-r="129,142" style="font-size:17px"></td><td>德心應手隊 vs 拉高比分隊</td><td>頭好壯壯隊 vs 飛常厲害隊</td></tr>
+      <tr><td>第 2 輪</td><td class="num" data-r="144,157" style="font-size:17px"></td><td>頭好壯壯隊 vs 飛常厲害隊</td><td>德心應手隊 vs 拉高比分隊</td></tr>
     </tbody>
   </table></div>
   <div class="grid2" style="margin-top:16px">
     <div class="card">
-      <h3><span class="ricon" style="--ic:var(--pink)"><svg><use href="#i-target"/></svg></span>遊戲一：發球打靶</h3>
-      <p>地上貼 1、3、5 分的目標區，每人發 3 球。全隊總分除以人數，平均最高的是冠軍。打進 5 分區請盡情歡呼。</p>
+      <h3><span class="ricon" style="--ic:var(--sky)"><svg><use href="#i-drop"/></svg></span>遊戲一：龍舟</h3>
+      <p><b>遊戲目標：</b>透過團隊擊球與救援，讓落水的隊友重新回到場上。</p>
+      <ol class="rules">
+        <li>兩隊分別站在球網兩側。</li>
+        <li>每隊先派出球員擊球，其他隊友依序準備輪替。</li>
+        <li>擊球失誤就算<b>落水</b>，要進入自己這一側的龍舟等待區（廚房區）。</li>
+        <li>還沒落水的隊員繼續挑戰，並設法救援落水的隊友。</li>
+        <li><b>救援規則：</b>落水的隊友在龍舟區成功回擊一球，就能回到場上。</li>
+        <li>時間到時，場上存活人數較多的隊伍獲勝。</li>
+      </ol>
+      <p class="small">名次怎麼算：兩場的勝隊比存活人數，多的拿冠軍（+5），另一隊拿亞軍（+3）。</p>
     </div>
     <div class="card">
-      <h3><span class="ricon" style="--ic:var(--sky)"><svg><use href="#i-paddle"/></svg></span>遊戲二：接教練發球</h3>
-      <p>教練在對面發球，隊員輪流接發球，把球打回對面場內就算成功。每人接 3 球，全隊成功球數除以人數，平均最高的是冠軍。教練的球不會太刁鑽（應該）。</p>
+      <h3><span class="ricon" style="--ic:var(--gold)"><svg><use href="#i-trophy"/></svg></span>遊戲二：王族</h3>
+      <p><b>遊戲目標：</b>挑戰場上的國王與皇后，打敗守擂者，就能登上王位。</p>
+      <ol class="rules">
+        <li>兩人一組，兩隊的組合交錯排成一列，先選一組擔任<b>皇族</b>（守擂者）。</li>
+        <li>下一組擔任挑戰者，雙方打雙打。</li>
+        <li>每輪只打 3 球，先拿到 2 分的組合獲勝。</li>
+        <li>皇族獲勝，就繼續留在場上接受下一組挑戰。</li>
+        <li>挑戰者獲勝，就取代原本的皇族，成為新的守擂者。</li>
+        <li>輸的組合回到隊伍最後面，等待再次挑戰。</li>
+      </ol>
+      <p class="small">名次怎麼算：每贏一輪，該組所屬的隊伍得 1 分。兩場合計比分數，最高的拿冠軍（+5），第二高的拿亞軍（+3）。</p>
     </div>
   </div>
   <div class="fairplay"><span class="bigicon" style="--ic:var(--pink)"><svg><use href="#i-eye"/></svg></span><div><h3>計分方式：互相監督制</h3>
@@ -594,8 +612,8 @@ var teamNames=['德心應手隊','拉高比分隊','頭好壯壯隊','飛常厲�
 
 
 /* 計分板 */
-var ITEMS=['混雙','女雙','男雙','發球打靶','接教練發球'];
-var picks=load('pb_picks11',{});
+var ITEMS=['混雙','女雙','男雙','龍舟','王族'];
+var picks=load('pb_picks12',{});
 function renderPicks(){
   var opts=function(sel){return '<option value="">—</option>'+teamNames.map(function(n,i){return '<option value="'+i+'"'+(String(sel)===String(i)?' selected':'')+'>'+esc(n)+'</option>'}).join('')};
   document.getElementById('picks').innerHTML=ITEMS.map(function(it,k){
@@ -623,10 +641,10 @@ document.getElementById('totals').addEventListener('change',function(e){
 });
 document.getElementById('picks').addEventListener('change',function(e){
   var m=e.target.id.match(/^([wr])(\d)$/);if(!m)return;
-  var k=+m[2];picks[k]=picks[k]||{};picks[k][m[1]]=e.target.value;save('pb_picks11',picks);calc();
+  var k=+m[2];picks[k]=picks[k]||{};picks[k][m[1]]=e.target.value;save('pb_picks12',picks);calc();
 });
 document.getElementById('clearBoard').onclick=function(){document.getElementById('clearConfirm').hidden=false};
-document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks11',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
+document.getElementById('clearYes').onclick=function(){picks={};dodge={};save('pb_picks12',picks);save('pb_dodge3',dodge);renderPicks();document.getElementById('clearConfirm').hidden=true};
 
 renderPicks();
 })();
